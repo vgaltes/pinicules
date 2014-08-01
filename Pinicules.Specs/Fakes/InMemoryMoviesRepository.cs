@@ -8,5 +8,9 @@ namespace Pinicules.Specs.Fakes
 {
     public class InMemoryMoviesRepository : IMoviesRepository
     {
+        public object GetMovies()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

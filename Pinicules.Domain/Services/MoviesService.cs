@@ -19,5 +19,10 @@ namespace Pinicules.Domain.Services
 
             this.tmdbRepository = tmdbRepository;
         }
+
+        public void GetMovies()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

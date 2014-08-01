@@ -1,14 +1,12 @@
-﻿using System;
+﻿using AssertMVC;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Web.Mvc;
-using AssertMVC;
-using Pinicules.Presentation.Models;
-using Pinicules.Specs.Fakes;
 using Pinicules.Domain.Repositories;
 using Pinicules.Domain.Services;
-using Pinicules.Presentation.Controllers;
-using System.Collections.Generic;
 using Pinicules.Infrastructure.Repositories;
+using Pinicules.Presentation.Controllers;
+using Pinicules.Presentation.Models;
+using Pinicules.Specs.Fakes;
+using System.Web.Mvc;
 
 namespace Pinicules.Specs
 {

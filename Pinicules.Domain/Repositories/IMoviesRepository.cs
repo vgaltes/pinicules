@@ -8,5 +8,6 @@ namespace Pinicules.Domain.Repositories
 {
     public interface IMoviesRepository
     {
+        object GetMovies();
     }
 }
