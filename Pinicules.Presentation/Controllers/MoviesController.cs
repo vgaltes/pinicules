@@ -1,4 +1,6 @@
-﻿using Pinicules.Domain.Services;
+﻿using Pinicules.Domain.DTOs;
+using Pinicules.Domain.Services;
+using Pinicules.Presentation.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +21,10 @@ namespace Pinicules.Presentation.Controllers
         // GET: Movies
         public ActionResult Index()
         {
-            return View();
+            List<MovieDTO> movies = moviesService.GetMovies();
+
+            var model = new MoviesSearchResult() { Items = movies };
+            return View(model);
         }
     }
 }
