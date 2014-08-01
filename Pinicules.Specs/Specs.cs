@@ -1,5 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Web.Mvc;
+using AssertMVC;
 
 namespace Pinicules.Specs
 {
@@ -15,6 +17,8 @@ namespace Pinicules.Specs
 
             ActionResult result = moviesController.Index();
 
+            MoviesSearchResult model = result.ShouldBe<ViewResult>().WithModel().OfType<MoviesSearchResult>().Object();
+            Assert.AreEqual(10, model.Items.Length());
         }
     }
 }
