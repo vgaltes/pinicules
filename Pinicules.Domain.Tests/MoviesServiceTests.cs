@@ -57,28 +57,23 @@ namespace Pinicules.Domain.Tests
             var tmdbMovie1 = new MovieDTO()
             {
                 Id = 1,
-                Title = "Title 1",
-                Summary = "Summary 1",
-                Directors = new List<string> { "Director 1" },
-                Actors = new List<string> { "Actor 1", "Actor 2", "Actor 3" }
+                Title = "Title 1"
             };
             var tmdbMovie2 = new MovieDTO()
             {
-                Title = "Title 2",
-                Summary = "Summary 2",
-                Directors = new List<string> { "Director 2" },
-                Actors = new List<string> { "Actor 2", "Actor 4", "Actor 5" }
+                Id = 2,
+                Title = "Title 2"
             };
 
-            tmdbRepositoryMock.Setup(tmdb => tmdb.GetMovieInformation(dbMovie1)).Returns(tmdbMovie1);
-            tmdbRepositoryMock.Setup(tmdb => tmdb.GetMovieInformation(dbMovie2)).Returns(tmdbMovie2);
+            tmdbRepositoryMock.Setup(tmdb => tmdb.GetMovieTitle(dbMovie1)).Returns(tmdbMovie1);
+            tmdbRepositoryMock.Setup(tmdb => tmdb.GetMovieTitle(dbMovie2)).Returns(tmdbMovie2);
 
             var moviesService = new MoviesService(movieRepositoryMock.Object, tmdbRepositoryMock.Object);
 
             var resultMovies = moviesService.GetMovies();
 
             Assert.AreEqual(2, resultMovies.Count);
-            Assert.AreEqual("Director 1", resultMovies[0].Directors[0]);
+            Assert.AreEqual("Title 1", resultMovies[0].Title);
             Assert.AreEqual(1, resultMovies[0].Id);
         }
     }

@@ -8,7 +8,7 @@ namespace Pinicules.Presentation.Models
 {
     public class MoviesSearchResult
     {
-        public List<MovieDTO> Items
+        public List<MovieSearchItem> Items
         {
             get;
             set;

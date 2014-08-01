@@ -30,7 +30,7 @@ namespace Pinicules.Domain.Services
             {
                 foreach (var movie in movies)
                 {
-                    moviesFilled.Add(tmdbRepository.GetMovieInformation(movie));
+                    moviesFilled.Add(tmdbRepository.GetMovieTitle(movie));
                 }
             }
 

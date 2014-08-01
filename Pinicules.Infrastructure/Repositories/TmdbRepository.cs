@@ -29,5 +29,15 @@ namespace Pinicules.Infrastructure.Repositories
 
             return movieDto;
         }
+
+
+        public MovieDTO GetMovieTitle(MovieDTO movieDto)
+        {
+            Movie movie = client.GetMovie(movieDto.Id);
+
+            movieDto.Title = movie.Title;
+
+            return movieDto;
+        }
     }
 }
