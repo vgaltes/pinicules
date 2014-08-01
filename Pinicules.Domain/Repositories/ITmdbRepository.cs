@@ -1,7 +1,8 @@
-﻿namespace Pinicules.Domain.Repositories
+﻿using Pinicules.Domain.DTOs;
+namespace Pinicules.Domain.Repositories
 {
     public interface ITmdbRepository
     {
-        object GetMovieInformation();
+        MovieDTO GetMovieInformation(MovieDTO movie);
     }
 }

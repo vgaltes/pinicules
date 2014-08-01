@@ -1,12 +1,13 @@
-﻿using Pinicules.Domain.Repositories;
+﻿using Pinicules.Domain.DTOs;
+using Pinicules.Domain.Repositories;
 
 namespace Pinicules.Infrastructure.Repositories
 {
     public class TmdbRepository : ITmdbRepository
     {
-        public object GetMovieInformation()
+        public MovieDTO GetMovieInformation(MovieDTO movie)
         {
-            throw new System.NotImplementedException();
+            return movie;
         }
     }
 }

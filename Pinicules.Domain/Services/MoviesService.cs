@@ -22,7 +22,15 @@ namespace Pinicules.Domain.Services
 
         public void GetMovies()
         {
-            this.moviesRepository.GetMovies();
+            var movies = this.moviesRepository.GetMovies();
+
+            if (movies != null)
+            {
+                foreach (var movie in movies)
+                {
+                    tmdbRepository.GetMovieInformation(movie);
+                }
+            }
         }
     }
 }

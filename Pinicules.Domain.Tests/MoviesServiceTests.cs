@@ -36,11 +36,11 @@ namespace Pinicules.Domain.Tests
 
             var tmdbRepositoryMock = new Mock<ITmdbRepository>();
 
-            var moviesService = new MoviesService(movieRepositoryMock.Object, null);
+            var moviesService = new MoviesService(movieRepositoryMock.Object, tmdbRepositoryMock.Object);
 
             moviesService.GetMovies();
 
-            tmdbRepositoryMock.Verify(tmdb => tmdb.GetMovieInformation(), Times.Exactly(2));
+            tmdbRepositoryMock.Verify(tmdb => tmdb.GetMovieInformation(It.IsAny<MovieDTO>()), Times.Exactly(2));
             
         }
     }
