@@ -1,4 +1,5 @@
-﻿using Pinicules.Domain.Repositories;
+﻿using Pinicules.Domain.DTOs;
+using Pinicules.Domain.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,17 +21,20 @@ namespace Pinicules.Domain.Services
             this.tmdbRepository = tmdbRepository;
         }
 
-        public void GetMovies()
+        public List<MovieDTO> GetMovies()
         {
             var movies = this.moviesRepository.GetMovies();
+            var moviesFilled = new List<MovieDTO>();
 
             if (movies != null)
             {
                 foreach (var movie in movies)
                 {
-                    tmdbRepository.GetMovieInformation(movie);
+                    moviesFilled.Add(tmdbRepository.GetMovieInformation(movie));
                 }
             }
+
+            return moviesFilled;
         }
     }
 }
