@@ -101,7 +101,8 @@ namespace AssertMVC.Tests
 
             var result = controller.ViewWithModel(model);
 
-            result.ShouldBe<ViewResult>().WithModel().OfType<int>();
+            var retrievedModel = result.ShouldBe<ViewResult>().WithModel().OfType<int>();
+            Assert.AreEqual(model, retrievedModel);
         }
 
         [TestMethod]

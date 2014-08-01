@@ -11,9 +11,10 @@ namespace AssertMVC
             this.model = model;
         }
 
-        public void OfType<T>()
+        public T OfType<T>()
         {
             Assert.IsInstanceOfType(model, typeof(T));
+            return (T)model;
         }
     }
 }
