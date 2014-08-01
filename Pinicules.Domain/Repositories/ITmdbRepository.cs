@@ -2,5 +2,6 @@
 {
     public interface ITmdbRepository
     {
+        object GetMovieInformation();
     }
 }
