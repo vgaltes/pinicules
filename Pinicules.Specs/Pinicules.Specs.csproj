@@ -81,6 +81,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Fakes\InMemoryMoviesRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Specs.cs" />
   </ItemGroup>
@@ -92,6 +93,10 @@
     <ProjectReference Include="..\3rdParty\AssertMVC\AssertMVC\AssertMVC.csproj">
       <Project>{2d554e8e-57ba-4154-9ef2-ecd56290ba7b}</Project>
       <Name>AssertMVC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pinicules.Domain\Pinicules.Domain.csproj">
+      <Project>{854a75c3-4a3f-419a-a3de-d2ce9508d266}</Project>
+      <Name>Pinicules.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\Pinicules.Presentation\Pinicules.Presentation.csproj">
       <Project>{7b24b6af-7cf9-4ec0-b937-735f5d08db16}</Project>
