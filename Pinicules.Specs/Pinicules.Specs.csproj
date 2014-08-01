@@ -98,6 +98,10 @@
       <Project>{854a75c3-4a3f-419a-a3de-d2ce9508d266}</Project>
       <Name>Pinicules.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Pinicules.Infrastructure\Pinicules.Infrastructure.csproj">
+      <Project>{12512d17-a008-42f4-81b6-e303498e3535}</Project>
+      <Name>Pinicules.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Pinicules.Presentation\Pinicules.Presentation.csproj">
       <Project>{7b24b6af-7cf9-4ec0-b937-735f5d08db16}</Project>
       <Name>Pinicules.Presentation</Name>

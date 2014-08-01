@@ -8,6 +8,7 @@ using Pinicules.Domain.Repositories;
 using Pinicules.Domain.Services;
 using Pinicules.Presentation.Controllers;
 using System.Collections.Generic;
+using Pinicules.Infrastructure.Repositories;
 
 namespace Pinicules.Specs
 {
@@ -18,7 +19,8 @@ namespace Pinicules.Specs
         public void If_I_Have_Ten_Movies_In_DB_Controller_Returns_A_Model_With_Ten_Items()
         {
             IMoviesRepository moviesRepository = new InMemoryMoviesRepository();
-            IMoviesService moviesService = new MoviesService(moviesRepository);
+            ITmdbRepository tmdbRepository = new TmdbRepository();
+            IMoviesService moviesService = new MoviesService(moviesRepository, tmdbRepository);
             var moviesController = new MoviesController(moviesService);
 
             ActionResult result = moviesController.Index();

@@ -11,9 +11,13 @@ namespace Pinicules.Domain.Services
     {
         private readonly IMoviesRepository moviesRepository;
 
-        public MoviesService(IMoviesRepository moviesRepository)
+        private readonly ITmdbRepository tmdbRepository;
+
+        public MoviesService(IMoviesRepository moviesRepository, ITmdbRepository tmdbRepository)
         {
             this.moviesRepository = moviesRepository;
+
+            this.tmdbRepository = tmdbRepository;
         }
     }
 }

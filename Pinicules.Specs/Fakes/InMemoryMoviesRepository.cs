@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Pinicules.Specs.Fakes
 {
-    class InMemoryMoviesRepository : IMoviesRepository
+    public class InMemoryMoviesRepository : IMoviesRepository
     {
     }
 }
