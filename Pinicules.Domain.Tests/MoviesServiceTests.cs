@@ -56,6 +56,7 @@ namespace Pinicules.Domain.Tests
             var tmdbRepositoryMock = new Mock<ITmdbRepository>();
             var tmdbMovie1 = new MovieDTO()
             {
+                Id = 1,
                 Title = "Title 1",
                 Summary = "Summary 1",
                 Directors = new List<string> { "Director 1" },
