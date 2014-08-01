@@ -22,7 +22,7 @@ namespace Pinicules.Domain.Services
 
         public void GetMovies()
         {
-            throw new NotImplementedException();
+            this.moviesRepository.GetMovies();
         }
     }
 }
