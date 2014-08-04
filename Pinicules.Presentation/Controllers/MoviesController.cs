@@ -23,7 +23,11 @@ namespace Pinicules.Presentation.Controllers
         {
             List<MovieDTO> movies = moviesService.GetMovies();
 
-            var model = new MoviesSearchResult() { Items = movies };
+            var model = new MoviesSearchResult() 
+            { 
+                Items = movies.Select(m => new MovieSearchItem { Id = m.Id, Title = m.Title }).ToList()
+            };
+
             return View(model);
         }
     }

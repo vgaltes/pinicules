@@ -12,6 +12,7 @@ namespace Pinicules.Presentation
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
+            UnityConfig.RegisterComponents();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
     }

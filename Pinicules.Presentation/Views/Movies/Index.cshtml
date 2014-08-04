@@ -1,0 +1,29 @@
+﻿@model Pinicules.Presentation.Models.MoviesSearchResult
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table>
+    <tr>
+        <td>
+            ID
+        </td>
+        <td>
+            TITLE
+        </td>
+    </tr>
+    @foreach (var movie in Model.Items)
+    {
+        <tr>
+            <td>
+                @movie.Id
+            </td>
+            <td>
+                @movie.Title
+            </td>
+        </tr>
+    }
+</table>
