@@ -13,5 +13,7 @@ namespace Pinicules.Presentation.Models
             get;
             set;
         }
+
+        public bool LoadMore { get; set; }
     }
 }
