@@ -32,9 +32,9 @@ namespace Pinicules.Infrastructure.Repositories
             this.numMovies = numMovies;
         }
 
-        public List<MovieDTO> GetMovies()
+        public List<MovieDTO> GetMovies(int pageSize)
         {
-            return movies.Take(numMovies).ToList();
+            return movies.Take(pageSize).ToList();
         }
     }
 }

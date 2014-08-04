@@ -12,13 +12,13 @@ namespace Pinicules.Presentation.Controllers
     public class MoviesController : Controller
     {
         private readonly IMoviesService moviesService;
+        private const int PAGE_SIZE = 10;
 
         public MoviesController(IMoviesService moviesService)
         {
             this.moviesService = moviesService;
         }
 
-        // GET: Movies
         public ActionResult Search(string searchTerm = "")
         {
             var model = new MoviesSearchResult() { Items = new List<MovieSearchItem>() };
@@ -28,12 +28,15 @@ namespace Pinicules.Presentation.Controllers
 
         public PartialViewResult SearchMovies(string searchTerm = "")
         {
-            List<MovieDTO> movies = moviesService.GetMovies();
+            List<MovieDTO> movies = moviesService.GetMovies(PAGE_SIZE + 1);
 
             var model = new MoviesSearchResult() 
             { 
-                Items = movies.Select(m => new MovieSearchItem { Id = m.Id, Title = m.Title, Image = m.Image }).ToList()
+                Items = movies.Take(PAGE_SIZE).Select(m => new MovieSearchItem { Id = m.Id, Title = m.Title, Image = m.Image }).ToList()
             };
+
+            if (movies.Count > PAGE_SIZE)
+                model.LoadMore = true;
 
             return PartialView(model);
         }

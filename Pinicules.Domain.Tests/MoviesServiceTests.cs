@@ -17,9 +17,9 @@ namespace Pinicules.Domain.Tests
 
             var moviesService = new MoviesService(movieRepositoryMock.Object, null);
 
-            moviesService.GetMovies();
+            moviesService.GetMovies(1);
 
-            movieRepositoryMock.Verify(mr => mr.GetMovies(), Times.Once());
+            movieRepositoryMock.Verify(mr => mr.GetMovies(1), Times.Once());
         }
 
         [TestMethod]
@@ -32,13 +32,13 @@ namespace Pinicules.Domain.Tests
                 new MovieDTO(2, "comments", 3.5f),
             };
 
-            movieRepositoryMock.Setup(mr => mr.GetMovies()).Returns(movies);
+            movieRepositoryMock.Setup(mr => mr.GetMovies(It.IsAny<int>())).Returns(movies);
 
             var tmdbRepositoryMock = new Mock<ITmdbRepository>();
 
             var moviesService = new MoviesService(movieRepositoryMock.Object, tmdbRepositoryMock.Object);
 
-            moviesService.GetMovies();
+            moviesService.GetMovies(movies.Count);
 
             tmdbRepositoryMock.Verify(tmdb => tmdb.GetMovieInformation(It.IsAny<MovieDTO>()), Times.Exactly(2));
 
@@ -51,7 +51,7 @@ namespace Pinicules.Domain.Tests
             var dbMovie1 = new MovieDTO(1, "comments1", 4.5f);
             var dbMovie2 = new MovieDTO(2, "comments2", 3.5f);
 
-            movieRepositoryMock.Setup(mr => mr.GetMovies()).Returns(new List<MovieDTO> { dbMovie1, dbMovie2 });
+            movieRepositoryMock.Setup(mr => mr.GetMovies(2)).Returns(new List<MovieDTO> { dbMovie1, dbMovie2 });
 
             var tmdbRepositoryMock = new Mock<ITmdbRepository>();
 
@@ -63,7 +63,7 @@ namespace Pinicules.Domain.Tests
 
             var moviesService = new MoviesService(movieRepositoryMock.Object, tmdbRepositoryMock.Object);
 
-            var resultMovies = moviesService.GetMovies();
+            var resultMovies = moviesService.GetMovies(2);
 
             Assert.AreEqual(2, resultMovies.Count);
             Assert.AreEqual("Title 1", resultMovies[0].Title);

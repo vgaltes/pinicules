@@ -5,6 +5,6 @@ namespace Pinicules.Domain.Services
 {
     public interface IMoviesService
     {
-        List<MovieDTO> GetMovies();
+        List<MovieDTO> GetMovies(int pageSize);
     }
 }
