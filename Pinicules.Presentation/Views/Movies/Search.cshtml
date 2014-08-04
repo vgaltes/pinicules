@@ -1,0 +1,33 @@
+﻿@model Pinicules.Presentation.Models.MoviesSearchResult
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    .ellipsis {
+        text-overflow: ellipsis;
+    }
+</style>
+<header class="page-header">
+    <div class="row">
+        <div class="col-md-2 text-center">LOGO</div>
+        <div class="col-md-8 text-center"><h1>LAS PELICULAS DE VICENTE <small>by Vincent</small></h1></div>
+        <div class="col-md-2 text-center">NUEVA PELICULA</div>
+        <div class="clearfix visible-md-block"></div>
+    </div>
+</header>
+
+<div>
+    <form>
+        <div class="input-group col-md-8 col-md-offset-2">
+            <input type="text" class="form-control" placeholder="Search&hellip;">
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default">Go</button>
+            </span>
+        </div>
+    </form>
+</div>
+
+<br />
+
+@Html.Action("SearchMovies")

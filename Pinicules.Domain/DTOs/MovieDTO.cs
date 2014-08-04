@@ -26,5 +26,7 @@ namespace Pinicules.Domain.DTOs
         public List<string> Directors { get; set; }
 
         public List<string> Actors { get; set; }
+
+        public string Image { get; set; }
     }
 }

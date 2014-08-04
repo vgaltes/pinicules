@@ -20,9 +20,9 @@ namespace Pinicules.Specs
             IMoviesService moviesService = new MoviesService(moviesRepository, tmdbRepository);
             var moviesController = new MoviesController(moviesService);
 
-            ActionResult result = moviesController.Index();
+            ActionResult result = moviesController.SearchMovies();
 
-            MoviesSearchResult model = result.ShouldBe<ViewResult>().WithModel().OfType<MoviesSearchResult>();
+            MoviesSearchResult model = result.ShouldBe<PartialViewResult>().WithModel().OfType<MoviesSearchResult>();
             Assert.AreEqual(10, model.Items.Count);
         }
     }

@@ -19,16 +19,23 @@ namespace Pinicules.Presentation.Controllers
         }
 
         // GET: Movies
-        public ActionResult Index()
+        public ActionResult Search(string searchTerm = "")
+        {
+            var model = new MoviesSearchResult() { Items = new List<MovieSearchItem>() };
+
+            return View(model);
+        }
+
+        public PartialViewResult SearchMovies(string searchTerm = "")
         {
             List<MovieDTO> movies = moviesService.GetMovies();
 
             var model = new MoviesSearchResult() 
             { 
-                Items = movies.Select(m => new MovieSearchItem { Id = m.Id, Title = m.Title }).ToList()
+                Items = movies.Select(m => new MovieSearchItem { Id = m.Id, Title = m.Title, Image = m.Image }).ToList()
             };
 
-            return View(model);
+            return PartialView(model);
         }
     }
 }

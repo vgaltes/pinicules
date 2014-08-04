@@ -54,19 +54,12 @@ namespace Pinicules.Domain.Tests
             movieRepositoryMock.Setup(mr => mr.GetMovies()).Returns(new List<MovieDTO> { dbMovie1, dbMovie2 });
 
             var tmdbRepositoryMock = new Mock<ITmdbRepository>();
-            var tmdbMovie1 = new MovieDTO()
-            {
-                Id = 1,
-                Title = "Title 1"
-            };
-            var tmdbMovie2 = new MovieDTO()
-            {
-                Id = 2,
-                Title = "Title 2"
-            };
 
-            tmdbRepositoryMock.Setup(tmdb => tmdb.GetMovieTitle(dbMovie1)).Returns(tmdbMovie1);
-            tmdbRepositoryMock.Setup(tmdb => tmdb.GetMovieTitle(dbMovie2)).Returns(tmdbMovie2);
+            var tmdbMovie1 = new MovieDTO() { Id = 1, Title = "Title 1", Image = "url1" };
+            var tmdbMovie2 = new MovieDTO() { Id = 2, Title = "Title 2", Image = "url2" };
+
+            tmdbRepositoryMock.Setup(tmdb => tmdb.GetMovieInformation(dbMovie1)).Returns(tmdbMovie1);
+            tmdbRepositoryMock.Setup(tmdb => tmdb.GetMovieInformation(dbMovie2)).Returns(tmdbMovie2);
 
             var moviesService = new MoviesService(movieRepositoryMock.Object, tmdbRepositoryMock.Object);
 
@@ -74,6 +67,7 @@ namespace Pinicules.Domain.Tests
 
             Assert.AreEqual(2, resultMovies.Count);
             Assert.AreEqual("Title 1", resultMovies[0].Title);
+            Assert.IsFalse(string.IsNullOrEmpty(resultMovies[0].Image));
             Assert.AreEqual(1, resultMovies[0].Id);
         }
     }

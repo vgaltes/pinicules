@@ -19,23 +19,15 @@ namespace Pinicules.Infrastructure.Repositories
 
         public MovieDTO GetMovieInformation(MovieDTO movieDto)
         {
-            Movie movie = client.GetMovie(movieDto.Id);
-            TMDbLib.Objects.Movies.Credits credits = client.GetMovieCredits(movieDto.Id);
+            var sizes = client.Config.Images.PosterSizes;
+
+            Movie movie = client.GetMovie(movieDto.Id,"ES", MovieMethods.Credits | MovieMethods.Images);
 
             movieDto.Summary = movie.Overview;
             movieDto.Title = movie.Title;
-            movieDto.Directors = credits.Crew.Where(c => c.Job == "Director").Select(c => c.Name).ToList();
-            movieDto.Actors = credits.Cast.Select(c => c.Name).ToList();
-
-            return movieDto;
-        }
-
-
-        public MovieDTO GetMovieTitle(MovieDTO movieDto)
-        {
-            Movie movie = client.GetMovie(movieDto.Id);
-
-            movieDto.Title = movie.Title;
+            movieDto.Directors = movie.Credits.Crew.Where(c => c.Job == "Director").Select(c => c.Name).ToList();
+            movieDto.Actors = movie.Credits.Cast.Select(c => c.Name).ToList();
+            movieDto.Image = client.GetImageUrl(sizes[3], movie.PosterPath).ToString();
 
             return movieDto;
         }

@@ -1,0 +1,31 @@
+﻿@model Pinicules.Presentation.Models.MoviesSearchResult
+
+@if (Model.Items == null || Model.Items.Count == 0)
+{
+    <div>No results</div>
+}
+else
+{
+    <div class="container" id="searchResults">
+        <div class="row">
+            @{
+                int numItems = 0;
+            }
+            @foreach (var searchResultItem in Model.Items)
+            {
+                <div class="col-md-2 @((@numItems++ % 5) == 0 ? "col-md-offset-1" : "")">
+                    <div class="thumbnail">
+                        <img src="@searchResultItem.Image" alt="Sample Image">
+                    </div>
+                </div>
+
+                if (((numItems) % 5) == 0)
+                {
+                    <br/>
+                    <div class="clearfix"></div>
+                }
+            }
+        </div>
+    </div>
+}
+
