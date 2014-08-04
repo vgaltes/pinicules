@@ -15,7 +15,7 @@ namespace Pinicules.Specs
         [TestMethod]
         public void If_I_Have_Ten_Movies_In_DB_Controller_Returns_A_Model_With_Ten_Items()
         {
-            IMoviesRepository moviesRepository = new InMemoryMoviesRepository(10);
+            IMoviesRepository moviesRepository = new InMemoryMoviesRepository();
             ITmdbRepository tmdbRepository = new TmdbRepository();
             IMoviesService moviesService = new MoviesService(moviesRepository, tmdbRepository);
             var moviesController = new MoviesController(moviesService);
@@ -29,7 +29,7 @@ namespace Pinicules.Specs
         [TestMethod]
         public void If_I_Have_More_Than_Ten_Movies_In_DB_Controller_Returns_A_Model_With_Load_More_Enabled()
         {
-            IMoviesRepository moviesRepository = new InMemoryMoviesRepository(15);
+            IMoviesRepository moviesRepository = new InMemoryMoviesRepository();
             ITmdbRepository tmdbRepository = new TmdbRepository();
             IMoviesService moviesService = new MoviesService(moviesRepository, tmdbRepository);
             var moviesController = new MoviesController(moviesService);
