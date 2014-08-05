@@ -58,7 +58,8 @@ namespace Pinicules.Presentation.Controllers
         [HttpPost]
         public ActionResult Add(NewMovie newMovie)
         {
-            throw new NotImplementedException();
+            moviesService.AddNewMovie(newMovie.MovieId, newMovie.Title);
+            return RedirectToAction("Movie", new { id = newMovie });
         }
     }
 }

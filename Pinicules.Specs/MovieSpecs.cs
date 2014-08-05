@@ -42,9 +42,6 @@ namespace Pinicules.Specs
                                         .WithTmdbRepository()
                                         .Build();
 
-            //var routes = new RouteCollection();
-            //MvcApplication.RegisterRoutes(routes);
-
             var request = new Mock<HttpRequestBase>(MockBehavior.Strict);
             request.SetupGet(x => x.ApplicationPath).Returns("/");
             request.SetupGet(x => x.ServerVariables).Returns(new System.Collections.Specialized.NameValueCollection());

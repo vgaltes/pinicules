@@ -36,7 +36,9 @@ namespace Pinicules.Infrastructure.Repositories
 
         public void Add(int movieId, string title)
         {
-            throw new NotImplementedException();
+            var movie = new MovieDTO { Id = movieId, Title = title };
+
+            movies.Add(movie);
         }
     }
 }

@@ -9,6 +9,6 @@
         }
 
         public int MovieId { get; set; }
-        private string Title { get; set; }
+        public string Title { get; set; }
     }
 }
