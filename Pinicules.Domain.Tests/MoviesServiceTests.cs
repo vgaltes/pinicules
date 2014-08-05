@@ -76,21 +76,17 @@ namespace Pinicules.Domain.Tests
         public void GetMovieShouldCallToTmdbRepository()
         {
             var movieRepositoryMock = new Mock<IMoviesRepository>();
-            var dbMovie1 = new MovieDTO(1, "comments1", 4.5f);
-
-            movieRepositoryMock.Setup(mr => mr.GetMovie(1)).Returns(dbMovie1);
-
             var tmdbRepositoryMock = new Mock<ITmdbRepository>();
 
             var tmdbMovie1 = new MovieDTO() { Id = 1, Title = "Title 1", Image = "url1" };
 
-            tmdbRepositoryMock.Setup(tmdb => tmdb.GetMovieInformation(dbMovie1)).Returns(tmdbMovie1);
+            tmdbRepositoryMock.Setup(tmdb => tmdb.GetMovieInformation(1)).Returns(tmdbMovie1);
 
             var moviesService = new MoviesService(movieRepositoryMock.Object, tmdbRepositoryMock.Object);
 
             MovieDTO movie = moviesService.GetMovie(1);
 
-            movie.ShouldBeEquivalentTo(dbMovie1);
+            movie.ShouldBeEquivalentTo(tmdbMovie1);
         }
     }
 }

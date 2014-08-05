@@ -36,9 +36,9 @@ namespace Pinicules.Domain.Services
             return moviesFilled;
         }
 
-        public MovieDTO GetMovie(int p)
+        public MovieDTO GetMovie(int movieId)
         {
-            throw new System.NotImplementedException();
+            return tmdbRepository.GetMovieInformation(movieId);
         }
     }
 }

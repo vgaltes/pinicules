@@ -33,5 +33,11 @@ namespace Pinicules.Infrastructure.Repositories
                     .Skip((page - 1) * pageSize)
                     .Take(numItems).ToList();
         }
+
+
+        public MovieDTO GetMovie(int movieId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
