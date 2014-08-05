@@ -88,5 +88,18 @@ namespace Pinicules.Domain.Tests
 
             movie.ShouldBeEquivalentTo(tmdbMovie1);
         }
+
+        [TestMethod]
+        public void AddMovieShouldCallMoviesRepository()
+        {
+            var movieRepositoryMock = new Mock<IMoviesRepository>();
+            var tmdbRepositoryMock = new Mock<ITmdbRepository>();
+
+            var moviesService = new MoviesService(movieRepositoryMock.Object, tmdbRepositoryMock.Object);
+
+            moviesService.AddNewMovie(1, "Title 1");
+
+            movieRepositoryMock.Verify(mrm => mrm.Add(1, "Title 1"));
+        }
     }
 }
