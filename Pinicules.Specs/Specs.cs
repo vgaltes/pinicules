@@ -39,5 +39,20 @@ namespace Pinicules.Specs
             MoviesSearchResult model = result.ShouldBe<PartialViewResult>().WithModel().OfType<MoviesSearchResult>();
             Assert.IsTrue(model.LoadMore);
         }
+
+        [TestMethod]
+        public void Movies_Controller_Return_Items_Regarding_The_Actual_Page()
+        {
+            IMoviesRepository moviesRepository = new InMemoryMoviesRepository();
+            ITmdbRepository tmdbRepository = new TmdbRepository();
+            IMoviesService moviesService = new MoviesService(moviesRepository, tmdbRepository);
+            var moviesController = new MoviesController(moviesService);
+
+            ActionResult result = moviesController.SearchMovies(2);
+
+            MoviesSearchResult model = result.ShouldBe<PartialViewResult>().WithModel().OfType<MoviesSearchResult>();
+            Assert.IsTrue(model.LoadMore);
+            Assert.AreEqual(5, model.Items.Count);
+        }
     }
 }
