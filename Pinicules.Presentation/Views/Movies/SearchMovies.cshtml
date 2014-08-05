@@ -1,5 +1,14 @@
 ﻿@model Pinicules.Presentation.Models.MoviesSearchResult
 
+<script type="text/javascript">
+    function OnComplete(request, status) {
+        var button = $(loadMoreMovies)[0];
+        if (button) {
+            $(button).remove()
+        }        
+    }
+</script>
+
 @if (Model.Items == null || Model.Items.Count == 0)
 {
     <div>No results</div>
@@ -9,7 +18,7 @@ else
     <div class="container" id="searchResults">
         <div class="row">
             @{
-                int numItems = 0;
+    int numItems = 0;
             }
             @foreach (var searchResultItem in Model.Items)
             {
@@ -21,7 +30,7 @@ else
 
                 if (((numItems) % 5) == 0)
                 {
-                    <br/>
+                    <br />
                     <div class="clearfix"></div>
                 }
             }
@@ -30,9 +39,18 @@ else
 
     if (Model.LoadMore)
     {
-        <form>
-            <button type="submit" class="btn btn-primary col-md-2 col-md-offset-5">LOAD MORE</button>
-        </form>
+        using (Ajax.BeginForm("SearchMovies", new AjaxOptions
+        {
+            UpdateTargetId = "searchMoviesResults",
+            InsertionMode = InsertionMode.InsertAfter,
+            OnComplete = "OnComplete"
+        }))
+        {
+            <button type="submit" id="loadMoreMovies" class="btn btn-primary col-md-2 col-md-offset-5">LOAD MORE</button>
+        }
+
     }
+
+    
 }
 
