@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using AssertMVC;
+using Pinicules.Domain.DTOs;
 
 namespace Pinicules.Specs
 {
@@ -23,7 +24,7 @@ namespace Pinicules.Specs
 
             var result = moviesController.Movie(100402);
 
-            MovieItem model = result.ShouldBe<PartialViewResult>().WithModel().OfType<MovieItem>();
+            MovieDTO model = result.ShouldBe<ViewResult>().WithModel().OfType<MovieDTO>();
             Assert.AreEqual("Capitán América: El soldado de invierno", model.Title);
             Assert.AreEqual(19, model.Actors.Count);
             Assert.AreEqual(2, model.Directors.Count);

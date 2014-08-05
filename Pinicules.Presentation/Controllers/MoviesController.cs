@@ -45,7 +45,9 @@ namespace Pinicules.Presentation.Controllers
 
         public ActionResult Movie(int movieId)
         {
-            throw new NotImplementedException();
+            MovieDTO movie = moviesService.GetMovie(movieId);
+
+            return View(movie);
         }
     }
 }
