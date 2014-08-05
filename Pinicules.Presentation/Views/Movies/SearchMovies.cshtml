@@ -44,7 +44,7 @@ else
             UpdateTargetId = "searchMoviesResults",
             InsertionMode = InsertionMode.InsertAfter,
             OnComplete = "OnComplete",
-            Url = Url.Action("SearchMovies", new { page = 2 }),
+            Url = Url.Action("SearchMovies", new { page = Model.NextPage }),
         }))
         {
             <button type="submit" id="loadMoreMovies" class="btn btn-primary col-md-2 col-md-offset-5">LOAD MORE</button>
