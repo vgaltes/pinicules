@@ -34,8 +34,7 @@ namespace Pinicules.Infrastructure.Repositories
                     .Take(numItems).ToList();
         }
 
-
-        public MovieDTO GetMovie(int movieId)
+        public void Add(int movieId, string title)
         {
             throw new NotImplementedException();
         }

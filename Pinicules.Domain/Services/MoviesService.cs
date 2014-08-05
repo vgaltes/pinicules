@@ -41,9 +41,9 @@ namespace Pinicules.Domain.Services
             return tmdbRepository.GetMovieInformation(movieId);
         }
 
-        public void AddNewMovie(int p1, string p2)
+        public void AddNewMovie(int movieId, string title)
         {
-            throw new System.NotImplementedException();
+            moviesRepository.Add(movieId, title);
         }
     }
 }
