@@ -61,5 +61,10 @@ namespace Pinicules.Presentation.Controllers
             moviesService.AddNewMovie(newMovie.MovieId, newMovie.Title);
             return RedirectToAction("Movie", new { id = newMovie });
         }
+
+        public ActionResult LookupMovies(string searchTerm)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

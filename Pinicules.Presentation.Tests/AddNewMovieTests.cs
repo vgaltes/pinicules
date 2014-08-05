@@ -4,6 +4,7 @@ using Pinicules.TestBuilders;
 using AssertMVC;
 using System.Web;
 using System.Web.Mvc;
+using Pinicules.Presentation.Models;
 
 namespace Pinicules.Presentation.Tests
 {
@@ -33,7 +34,7 @@ namespace Pinicules.Presentation.Tests
 
             ActionResult result = moviesController.LookupMovies("el milagro de p tinto");
 
-            var model = result.Shouldbe<PartialViewResult>().WithModel().OfType<LookupMoviesResult>();
+            var model = result.ShouldBe<PartialViewResult>().WithModel().OfType<LookupMoviesResult>();
 
             Assert.AreEqual(1, model.Items);
         }

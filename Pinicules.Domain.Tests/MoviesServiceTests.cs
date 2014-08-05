@@ -101,5 +101,18 @@ namespace Pinicules.Domain.Tests
 
             movieRepositoryMock.Verify(mrm => mrm.Add(1, "Title 1"));
         }
+
+        [TestMethod]
+        public void LookupMoviesShouldCallTmdbRepository()
+        {
+            var movieRepositoryMock = new Mock<IMoviesRepository>();
+            var tmdbRepositoryMock = new Mock<ITmdbRepository>();
+
+            var moviesService = new MoviesService(movieRepositoryMock.Object, tmdbRepositoryMock.Object);
+
+            moviesService.LookupMovies("search term");
+
+            tmdbRepositoryMock.Verify(t => t.GetMovies("search term"));
+        }
     }
 }

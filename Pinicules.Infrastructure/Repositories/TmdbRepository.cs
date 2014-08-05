@@ -49,5 +49,11 @@ namespace Pinicules.Infrastructure.Repositories
 
             return movieDto;
         }
+
+
+        public System.Collections.Generic.List<MovieDTO> GetMovies(string searchTerm)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
