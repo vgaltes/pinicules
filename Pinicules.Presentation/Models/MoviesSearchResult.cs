@@ -17,5 +17,7 @@ namespace Pinicules.Presentation.Models
         public bool LoadMore { get; set; }
 
         public int NextPage { get; set; }
+
+        public string SearchTerm { get; set; }
     }
 }

@@ -21,7 +21,7 @@ namespace Pinicules.Presentation.Controllers
 
         public ActionResult Search(string searchTerm = "")
         {
-            var model = new MoviesSearchResult() { Items = new List<MovieSearchItem>() };
+            var model = new MoviesSearchResult() { Items = new List<MovieSearchItem>(), SearchTerm = searchTerm };
 
             return View(model);
         }
@@ -32,20 +32,20 @@ namespace Pinicules.Presentation.Controllers
 
             var model = new MoviesSearchResult() 
             { 
-                Items = movies.Take(PAGE_SIZE).Select(m => new MovieSearchItem { Id = m.Id, Title = m.Title, Image = m.Image }).ToList()
+                Items = movies.Take(PAGE_SIZE).Select(m => new MovieSearchItem { Id = m.Id, Title = m.Title, Image = m.Image }).ToList(),
+                SearchTerm = searchTerm,
+                NextPage = page + 1
             };
 
             if (movies.Count > PAGE_SIZE)
                 model.LoadMore = true;
 
-            model.NextPage = page + 1;
-
             return PartialView(model);
         }
 
-        public ActionResult Movie(int id)
+        public ActionResult Movie(int id, string previousSearch = "")
         {
-            MovieDTO movie = moviesService.GetMovie(id);
+            MovieItem movie = new MovieItem(moviesService.GetMovie(id), previousSearch);
 
             return View(movie);
         }

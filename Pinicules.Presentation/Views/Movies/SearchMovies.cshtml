@@ -24,7 +24,7 @@ else
             {
                 <div class="col-md-2 @((@numItems++ % 5) == 0 ? "col-md-offset-1" : "")">
                     <div class="thumbnail">
-                        <a href="@Url.Action("Movie", new {id = searchResultItem.Id})">
+                        <a href="@Url.Action("Movie", new { id = searchResultItem.Id, previousSearch = Model.SearchTerm})">
                             <img src="@searchResultItem.Image" alt="Sample Image">
                         </a>
                     </div>

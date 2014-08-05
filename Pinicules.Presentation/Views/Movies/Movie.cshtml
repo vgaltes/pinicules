@@ -1,8 +1,12 @@
-﻿@model Pinicules.Domain.DTOs.MovieDTO
+﻿@model Pinicules.Presentation.Models.MovieItem
 
 @{
     ViewBag.Title = Model.Title;
 }
+<ul class="breadcrumb">
+    <li>@Html.ActionLink("Busqueda", "Search", new { searchTerm = Model.PreviousSearch})</li>
+    <li class="active">@Model.Title</li>
+</ul>
 
 <div class="container">
     <div class="row">

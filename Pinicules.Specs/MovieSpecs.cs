@@ -24,7 +24,7 @@ namespace Pinicules.Specs
 
             var result = moviesController.Movie(100402);
 
-            MovieDTO model = result.ShouldBe<ViewResult>().WithModel().OfType<MovieDTO>();
+            MovieItem model = result.ShouldBe<ViewResult>().WithModel().OfType<MovieItem>();
             Assert.AreEqual("Capitán América: El soldado de invierno", model.Title);
             Assert.AreEqual(19, model.Actors.Count);
             Assert.AreEqual(2, model.Directors.Count);
