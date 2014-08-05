@@ -18,14 +18,21 @@
 </header>
 
 <div>
-    <form>
+    @using (Ajax.BeginForm(new AjaxOptions
+    {
+        UpdateTargetId = "searchMoviesResults",
+        InsertionMode = InsertionMode.InsertAfter,
+        OnComplete = "OnComplete",
+        Url = Url.Action("SearchMovies", new { page = 1 }),
+    }))
+    {
         <div class="input-group col-md-8 col-md-offset-2">
-            <input type="text" class="form-control" placeholder="Search&hellip;">
+            <input type="text" id="searchTerm" name="searchTerm" class="form-control" placeholder="Search&hellip;">
             <span class="input-group-btn">
-                <button type="button" class="btn btn-default">Go</button>
+                <button type="submit" class="btn btn-default">Go</button>
             </span>
         </div>
-    </form>
+    }
 </div>
 
 <br />
