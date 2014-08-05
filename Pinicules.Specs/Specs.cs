@@ -12,14 +12,20 @@ namespace Pinicules.Specs
     [TestClass]
     public class Specs
     {
+        MoviesController moviesController;
+
+        [TestInitialize]
+        public void TestInitialize()
+        {
+            moviesController = new MoviesControllerBuilder()
+                                .WithInMemoryMoviesRepository()
+                                .WithTmdbRepository()
+                                .Build();
+        }
+
         [TestMethod]
         public void If_I_Have_Ten_Movies_In_DB_Controller_Returns_A_Model_With_Ten_Items()
         {
-            IMoviesRepository moviesRepository = new InMemoryMoviesRepository();
-            ITmdbRepository tmdbRepository = new TmdbRepository();
-            IMoviesService moviesService = new MoviesService(moviesRepository, tmdbRepository);
-            var moviesController = new MoviesController(moviesService);
-
             ActionResult result = moviesController.SearchMovies(1);
 
             MoviesSearchResult model = result.ShouldBe<PartialViewResult>().WithModel().OfType<MoviesSearchResult>();
@@ -29,11 +35,6 @@ namespace Pinicules.Specs
         [TestMethod]
         public void If_I_Have_More_Than_Ten_Movies_In_DB_Controller_Returns_A_Model_With_Load_More_Enabled()
         {
-            IMoviesRepository moviesRepository = new InMemoryMoviesRepository();
-            ITmdbRepository tmdbRepository = new TmdbRepository();
-            IMoviesService moviesService = new MoviesService(moviesRepository, tmdbRepository);
-            var moviesController = new MoviesController(moviesService);
-
             ActionResult result = moviesController.SearchMovies(1);
 
             MoviesSearchResult model = result.ShouldBe<PartialViewResult>().WithModel().OfType<MoviesSearchResult>();
@@ -43,11 +44,6 @@ namespace Pinicules.Specs
         [TestMethod]
         public void Movies_Controller_Return_Items_Regarding_The_Actual_Page()
         {
-            IMoviesRepository moviesRepository = new InMemoryMoviesRepository();
-            ITmdbRepository tmdbRepository = new TmdbRepository();
-            IMoviesService moviesService = new MoviesService(moviesRepository, tmdbRepository);
-            var moviesController = new MoviesController(moviesService);
-
             ActionResult result = moviesController.SearchMovies(2);
 
             MoviesSearchResult model = result.ShouldBe<PartialViewResult>().WithModel().OfType<MoviesSearchResult>();
