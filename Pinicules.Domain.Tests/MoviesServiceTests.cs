@@ -4,6 +4,7 @@ using Pinicules.Domain.DTOs;
 using Pinicules.Domain.Repositories;
 using Pinicules.Domain.Services;
 using System.Collections.Generic;
+using FluentAssertions;
 
 namespace Pinicules.Domain.Tests
 {
@@ -69,6 +70,27 @@ namespace Pinicules.Domain.Tests
             Assert.AreEqual("Title 1", resultMovies[0].Title);
             Assert.IsFalse(string.IsNullOrEmpty(resultMovies[0].Image));
             Assert.AreEqual(1, resultMovies[0].Id);
+        }
+
+        [TestMethod]
+        public void GetMovieShouldCallToTmdbRepository()
+        {
+            var movieRepositoryMock = new Mock<IMoviesRepository>();
+            var dbMovie1 = new MovieDTO(1, "comments1", 4.5f);
+
+            movieRepositoryMock.Setup(mr => mr.GetMovie(1)).Returns(dbMovie1);
+
+            var tmdbRepositoryMock = new Mock<ITmdbRepository>();
+
+            var tmdbMovie1 = new MovieDTO() { Id = 1, Title = "Title 1", Image = "url1" };
+
+            tmdbRepositoryMock.Setup(tmdb => tmdb.GetMovieInformation(dbMovie1)).Returns(tmdbMovie1);
+
+            var moviesService = new MoviesService(movieRepositoryMock.Object, tmdbRepositoryMock.Object);
+
+            MovieDTO movie = moviesService.GetMovie(1);
+
+            movie.ShouldBeEquivalentTo(dbMovie1);
         }
     }
 }
