@@ -43,9 +43,9 @@ namespace Pinicules.Presentation.Controllers
             return PartialView(model);
         }
 
-        public ActionResult Movie(int movieId)
+        public ActionResult Movie(int id)
         {
-            MovieDTO movie = moviesService.GetMovie(movieId);
+            MovieDTO movie = moviesService.GetMovie(id);
 
             return View(movie);
         }

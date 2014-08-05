@@ -111,6 +111,7 @@
     <Content Include="Web.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Movies\SearchMovies.cshtml" />
+    <Content Include="Views\Movies\Movie.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />

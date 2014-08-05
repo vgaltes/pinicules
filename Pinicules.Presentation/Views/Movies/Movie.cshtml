@@ -1,0 +1,58 @@
+﻿@model Pinicules.Domain.DTOs.MovieDTO
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="thumbnail">
+                <img src="@Model.Image" alt="@Model.Title">
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="row form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <label class="control-label col-md-2">Titulo</label>
+                        </div>
+                        <div class="col-md-10">
+                            <p class="form-control-static">@Model.Title</p>
+                        </div>
+                    </div>
+            </div>
+            <div class="row form-horizontal">
+                <div class="form-group">
+                    <div class="col-md-2">
+                        <label class="control-label col-md-2">Resumen</label>
+                    </div>
+                    <div class="col-md-10">
+                        <p class="form-control-static">@Model.Summary</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-horizontal">
+                <div class="form-group">
+                    <div class="col-md-2">
+                        <label class="control-label col-md-2">Director(es)</label>
+                    </div>
+                    <div class="col-md-10">
+                        <p class="form-control-static">@string.Join(", ", Model.Directors.ToArray())</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-horizontal">
+                <div class="form-group">
+                    <div class="col-md-2">
+                        <label class="control-label col-md-2">Reparto</label>
+                    </div>
+                    <div class="col-md-10">
+                        <p class="form-control-static">@string.Join(", ", Model.Actors.ToArray())</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
