@@ -21,7 +21,7 @@
     @using (Ajax.BeginForm(new AjaxOptions
     {
         UpdateTargetId = "searchMoviesResults",
-        InsertionMode = InsertionMode.InsertAfter,
+        InsertionMode = InsertionMode.Replace,
         OnComplete = "OnComplete",
         Url = Url.Action("SearchMovies", new { page = 1 }),
     }))
