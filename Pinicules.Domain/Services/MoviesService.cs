@@ -35,5 +35,10 @@ namespace Pinicules.Domain.Services
 
             return moviesFilled;
         }
+
+        public MovieDTO GetMovie(int p)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
