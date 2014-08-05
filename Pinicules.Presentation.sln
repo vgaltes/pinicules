@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinicules.Infrastructure", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinicules.Domain.Tests", "Pinicules.Domain.Tests\Pinicules.Domain.Tests.csproj", "{C9B91861-0A0C-4138-919E-CF478CE544E6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinicules.Presentation.Tests", "Pinicules.Presentation.Tests\Pinicules.Presentation.Tests.csproj", "{48FF2213-786A-4181-96E4-FF604643E7CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinicules.TestBuilders", "Pinicules.TestBuilders\Pinicules.TestBuilders.csproj", "{D82B4C9A-53C2-454C-89D6-F13B2C48FA87}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{C9B91861-0A0C-4138-919E-CF478CE544E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9B91861-0A0C-4138-919E-CF478CE544E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9B91861-0A0C-4138-919E-CF478CE544E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48FF2213-786A-4181-96E4-FF604643E7CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48FF2213-786A-4181-96E4-FF604643E7CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48FF2213-786A-4181-96E4-FF604643E7CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48FF2213-786A-4181-96E4-FF604643E7CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D82B4C9A-53C2-454C-89D6-F13B2C48FA87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D82B4C9A-53C2-454C-89D6-F13B2C48FA87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D82B4C9A-53C2-454C-89D6-F13B2C48FA87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D82B4C9A-53C2-454C-89D6-F13B2C48FA87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

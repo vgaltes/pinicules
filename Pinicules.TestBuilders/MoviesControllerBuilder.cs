@@ -3,7 +3,7 @@ using Pinicules.Domain.Services;
 using Pinicules.Infrastructure.Repositories;
 using Pinicules.Presentation.Controllers;
 
-namespace Pinicules.Specs
+namespace Pinicules.TestBuilders
 {
     public class MoviesControllerBuilder
     {

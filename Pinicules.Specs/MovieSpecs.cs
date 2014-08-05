@@ -1,17 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Pinicules.Presentation.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Mvc;
-using AssertMVC;
-using Pinicules.Domain.DTOs;
+﻿using AssertMVC;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Pinicules.Presentation.Models;
+using Pinicules.TestBuilders;
 using System.Web;
+using System.Web.Mvc;
 using System.Web.Routing;
-using Pinicules.Presentation.Controllers;
 
 namespace Pinicules.Specs
 {

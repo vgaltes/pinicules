@@ -5,6 +5,7 @@ using Pinicules.Domain.Services;
 using Pinicules.Infrastructure.Repositories;
 using Pinicules.Presentation.Controllers;
 using Pinicules.Presentation.Models;
+using Pinicules.TestBuilders;
 using System.Web.Mvc;
 
 namespace Pinicules.Specs
