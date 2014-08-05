@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+}
+
+<div>
+    @using (Ajax.BeginForm(new AjaxOptions
+    {
+        UpdateTargetId = "lookupMoviesResults",
+        InsertionMode = InsertionMode.Replace,
+        Url = Url.Action("LookupMovies", new { page = 1 }),
+    }))
+    {
+        Html.RenderPartial("SearchInput");
+    }
+</div>
+
+<div id="lookupMoviesResults"></div>

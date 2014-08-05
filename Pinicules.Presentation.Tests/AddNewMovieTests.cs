@@ -22,5 +22,20 @@ namespace Pinicules.Presentation.Tests
 
             result.ShouldBe<ViewResult>();
         }
+
+        [TestMethod]
+        public void LookupMoviesShouldReturnTheMovie()
+        {
+            var moviesController = new MoviesControllerBuilder()
+                                        .WithInMemoryMoviesRepository()
+                                        .WithTmdbRepository()
+                                        .Build();
+
+            ActionResult result = moviesController.LookupMovies("el milagro de p tinto");
+
+            var model = result.Shouldbe<PartialViewResult>().WithModel().OfType<LookupMoviesResult>();
+
+            Assert.AreEqual(1, model.Items);
+        }
     }
 }

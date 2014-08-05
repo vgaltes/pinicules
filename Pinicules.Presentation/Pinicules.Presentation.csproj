@@ -112,6 +112,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Movies\SearchMovies.cshtml" />
     <Content Include="Views\Movies\Movie.cshtml" />
+    <Content Include="Views\Movies\Add.cshtml" />
+    <Content Include="Views\Shared\SearchInput.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
