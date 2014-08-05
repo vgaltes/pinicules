@@ -49,5 +49,16 @@ namespace Pinicules.Presentation.Controllers
 
             return View(movie);
         }
+
+        public ActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Add(NewMovie newMovie)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
