@@ -20,7 +20,7 @@ namespace Pinicules.Specs
             IMoviesService moviesService = new MoviesService(moviesRepository, tmdbRepository);
             var moviesController = new MoviesController(moviesService);
 
-            ActionResult result = moviesController.SearchMovies();
+            ActionResult result = moviesController.SearchMovies(1);
 
             MoviesSearchResult model = result.ShouldBe<PartialViewResult>().WithModel().OfType<MoviesSearchResult>();
             Assert.AreEqual(10, model.Items.Count);
@@ -34,7 +34,7 @@ namespace Pinicules.Specs
             IMoviesService moviesService = new MoviesService(moviesRepository, tmdbRepository);
             var moviesController = new MoviesController(moviesService);
 
-            ActionResult result = moviesController.SearchMovies();
+            ActionResult result = moviesController.SearchMovies(1);
 
             MoviesSearchResult model = result.ShouldBe<PartialViewResult>().WithModel().OfType<MoviesSearchResult>();
             Assert.IsTrue(model.LoadMore);
@@ -51,7 +51,7 @@ namespace Pinicules.Specs
             ActionResult result = moviesController.SearchMovies(2);
 
             MoviesSearchResult model = result.ShouldBe<PartialViewResult>().WithModel().OfType<MoviesSearchResult>();
-            Assert.IsTrue(model.LoadMore);
+            Assert.IsFalse(model.LoadMore);
             Assert.AreEqual(5, model.Items.Count);
         }
     }

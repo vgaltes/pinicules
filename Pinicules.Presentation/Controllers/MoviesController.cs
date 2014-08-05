@@ -26,9 +26,9 @@ namespace Pinicules.Presentation.Controllers
             return View(model);
         }
 
-        public PartialViewResult SearchMovies(string searchTerm = "")
+        public PartialViewResult SearchMovies(int page, string searchTerm = "")
         {
-            List<MovieDTO> movies = moviesService.GetMovies(PAGE_SIZE + 1);
+            List<MovieDTO> movies = moviesService.GetMovies(PAGE_SIZE + 1, page, PAGE_SIZE);
 
             var model = new MoviesSearchResult() 
             { 

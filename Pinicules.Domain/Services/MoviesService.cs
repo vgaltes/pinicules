@@ -17,9 +17,9 @@ namespace Pinicules.Domain.Services
             this.tmdbRepository = tmdbRepository;
         }
 
-        public List<MovieDTO> GetMovies(int pageSize)
+        public List<MovieDTO> GetMovies(int numItems, int page, int pageSize)
         {
-            var movies = this.moviesRepository.GetMovies(pageSize);
+            var movies = this.moviesRepository.GetMovies(numItems, page, pageSize);
             var moviesFilled = new List<MovieDTO>();
 
             if (movies != null)

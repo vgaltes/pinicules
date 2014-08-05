@@ -39,11 +39,12 @@ else
 
     if (Model.LoadMore)
     {
-        using (Ajax.BeginForm("SearchMovies", new AjaxOptions
+        using (Ajax.BeginForm( new AjaxOptions
         {
             UpdateTargetId = "searchMoviesResults",
             InsertionMode = InsertionMode.InsertAfter,
-            OnComplete = "OnComplete"
+            OnComplete = "OnComplete",
+            Url = Url.Action("SearchMovies", new { page = 2 }),
         }))
         {
             <button type="submit" id="loadMoreMovies" class="btn btn-primary col-md-2 col-md-offset-5">LOAD MORE</button>

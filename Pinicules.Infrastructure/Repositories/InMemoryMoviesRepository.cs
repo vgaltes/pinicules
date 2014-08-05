@@ -26,9 +26,9 @@ namespace Pinicules.Infrastructure.Repositories
                 new MovieDTO(){Id = 157353}
             };
 
-        public List<MovieDTO> GetMovies(int pageSize)
+        public List<MovieDTO> GetMovies(int numItems, int page, int pageSize)
         {
-            return movies.Take(pageSize).ToList();
+            return movies.Skip((page - 1) * pageSize).Take(numItems).ToList();
         }
     }
 }
