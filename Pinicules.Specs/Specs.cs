@@ -51,5 +51,15 @@ namespace Pinicules.Specs
             Assert.AreEqual(5, model.Items.Count);
             Assert.AreEqual(3, model.NextPage);
         }
+
+        [TestMethod]
+        public void When_Looking_For_Spiderman_Should_Return_One_Result()
+        {
+            ActionResult result = moviesController.SearchMovies(1, "Spiderman");
+
+            MoviesSearchResult model = result.ShouldBe<PartialViewResult>().WithModel().OfType<MoviesSearchResult>();
+            Assert.IsFalse(model.LoadMore);
+            Assert.AreEqual(1, model.Items.Count);
+        }
     }
 }
