@@ -64,7 +64,12 @@ namespace Pinicules.Presentation.Controllers
 
         public ActionResult LookupMovies(string searchTerm)
         {
-            throw new NotImplementedException();
+            var items = moviesService.LookupMovies(searchTerm);
+
+            var model = new LookupMoviesResult();
+            model.Items = items.Select(i => new LookupMovieItem { Id = i.Id, Image = i.Image, Title = i.Title }).ToList();
+
+            return PartialView(model);
         }
     }
 }

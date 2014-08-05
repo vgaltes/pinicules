@@ -112,7 +112,7 @@ namespace Pinicules.Domain.Tests
 
             moviesService.LookupMovies("search term");
 
-            tmdbRepositoryMock.Verify(t => t.GetMovies("search term"));
+            tmdbRepositoryMock.Verify(t => t.LookupMovies("search term"));
         }
     }
 }

@@ -9,6 +9,6 @@ namespace Pinicules.Domain.Repositories
 
         MovieDTO GetMovieInformation(int movieId);
 
-        List<MovieDTO> GetMovies(string searchTerm);
+        List<MovieDTO> LookupMovies(string searchTerm);
     }
 }

@@ -1,8 +1,11 @@
 ﻿using Pinicules.Domain.DTOs;
 using Pinicules.Domain.Repositories;
+using System.Collections.Generic;
 using System.Linq;
 using TMDbLib.Client;
+using TMDbLib.Objects.General;
 using TMDbLib.Objects.Movies;
+using TMDbLib.Objects.Search;
 
 namespace Pinicules.Infrastructure.Repositories
 {
@@ -51,9 +54,21 @@ namespace Pinicules.Infrastructure.Repositories
         }
 
 
-        public System.Collections.Generic.List<MovieDTO> GetMovies(string searchTerm)
+        public List<MovieDTO> LookupMovies(string searchTerm)
         {
-            throw new System.NotImplementedException();
+            var sizes = client.Config.Images.PosterSizes;
+
+            SearchContainer<SearchMovie> movies = client.SearchMovie(searchTerm);
+
+            var result = new List<MovieDTO>();
+
+            foreach (var searchResult in movies.Results)
+            {
+                var movieDto = GetMovieInformation(searchResult.Id);
+                result.Add(movieDto);
+            }
+
+            return result;
         }
     }
 }

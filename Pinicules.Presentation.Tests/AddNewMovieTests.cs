@@ -36,7 +36,7 @@ namespace Pinicules.Presentation.Tests
 
             var model = result.ShouldBe<PartialViewResult>().WithModel().OfType<LookupMoviesResult>();
 
-            Assert.AreEqual(1, model.Items);
+            Assert.AreEqual(1, model.Items.Count);
         }
     }
 }

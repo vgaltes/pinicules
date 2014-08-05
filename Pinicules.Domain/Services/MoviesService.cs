@@ -48,7 +48,7 @@ namespace Pinicules.Domain.Services
 
         public List<MovieDTO> LookupMovies(string searchTerm)
         {
-            return tmdbRepository.GetMovies(searchTerm);
+            return tmdbRepository.LookupMovies(searchTerm);
         }
     }
 }

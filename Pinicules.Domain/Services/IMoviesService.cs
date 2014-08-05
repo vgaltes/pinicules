@@ -10,5 +10,7 @@ namespace Pinicules.Domain.Services
         List<MovieDTO> GetMovies(string searchTerm, int numItems, int page, int pageSize);
 
         MovieDTO GetMovie(int movieId);
+
+        List<MovieDTO> LookupMovies(string searchTerm);
     }
 }
