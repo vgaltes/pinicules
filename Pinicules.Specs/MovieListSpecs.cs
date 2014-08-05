@@ -10,7 +10,7 @@ using System.Web.Mvc;
 namespace Pinicules.Specs
 {
     [TestClass]
-    public class Specs
+    public class MovieListSpecs
     {
         MoviesController moviesController;
 

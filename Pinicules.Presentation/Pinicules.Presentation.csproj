@@ -119,6 +119,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\MovieItem.cs" />
     <Compile Include="Models\MovieSearchItem.cs" />
     <Compile Include="Models\MoviesSearchResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
