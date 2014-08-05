@@ -53,6 +53,7 @@ namespace Pinicules.Specs
             MoviesSearchResult model = result.ShouldBe<PartialViewResult>().WithModel().OfType<MoviesSearchResult>();
             Assert.IsFalse(model.LoadMore);
             Assert.AreEqual(5, model.Items.Count);
+            Assert.AreEqual(3, model.NextPage);
         }
     }
 }
