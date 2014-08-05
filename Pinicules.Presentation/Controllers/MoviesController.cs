@@ -38,6 +38,8 @@ namespace Pinicules.Presentation.Controllers
             if (movies.Count > PAGE_SIZE)
                 model.LoadMore = true;
 
+            model.NextPage = page + 1;
+
             return PartialView(model);
         }
     }
