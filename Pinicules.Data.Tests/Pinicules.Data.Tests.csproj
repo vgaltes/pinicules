@@ -59,10 +59,14 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Initializers\MoviesInitializer.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="MoviesRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Pinicules.Domain\Pinicules.Domain.csproj">
+      <Project>{854a75c3-4a3f-419a-a3de-d2ce9508d266}</Project>
+      <Name>Pinicules.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Pinicules.Infrastructure\Pinicules.Data.csproj">
       <Project>{12512d17-a008-42f4-81b6-e303498e3535}</Project>
       <Name>Pinicules.Data</Name>

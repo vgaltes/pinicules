@@ -20,7 +20,7 @@ namespace Pinicules.Presentation
 
             //container.RegisterType<IMoviesRepository, InMemoryMoviesRepository>();
 
-            container.RegisterInstance<IMoviesRepository>(new InMemoryMoviesRepository());
+            //container.RegisterInstance<IMoviesRepository>(new InMemoryMoviesRepository());
             
             container.RegisterTypes(AllClasses.FromLoadedAssemblies(),
                                     WithMappings.FromMatchingInterface,
