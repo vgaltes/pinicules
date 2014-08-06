@@ -4,7 +4,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace Pinicules.Infrastructure.Repositories
+namespace Pinicules.Data.Repositories
 {
     public class InMemoryMoviesRepository : IMoviesRepository
     {

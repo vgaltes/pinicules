@@ -97,6 +97,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\noMovieImage.png" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -140,6 +141,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Movies\Search.cshtml" />
+    <Content Include="Views\Movies\LookupMovies.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -155,9 +157,9 @@
       <Project>{854a75c3-4a3f-419a-a3de-d2ce9508d266}</Project>
       <Name>Pinicules.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Pinicules.Infrastructure\Pinicules.Infrastructure.csproj">
+    <ProjectReference Include="..\Pinicules.Infrastructure\Pinicules.Data.csproj">
       <Project>{12512d17-a008-42f4-81b6-e303498e3535}</Project>
-      <Name>Pinicules.Infrastructure</Name>
+      <Name>Pinicules.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -7,8 +7,8 @@
     <ProjectGuid>{12512D17-A008-42F4-81B6-E303498E3535}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Pinicules.Infrastructure</RootNamespace>
-    <AssemblyName>Pinicules.Infrastructure</AssemblyName>
+    <RootNamespace>Pinicules.Data</RootNamespace>
+    <AssemblyName>Pinicules.Data</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

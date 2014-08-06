@@ -7,7 +7,7 @@ using TMDbLib.Objects.General;
 using TMDbLib.Objects.Movies;
 using TMDbLib.Objects.Search;
 
-namespace Pinicules.Infrastructure.Repositories
+namespace Pinicules.Data.Repositories
 {
     public class TmdbRepository : ITmdbRepository
     {
@@ -30,7 +30,10 @@ namespace Pinicules.Infrastructure.Repositories
             movieDto.Title = movie.Title;
             movieDto.Directors = movie.Credits.Crew.Where(c => c.Job == "Director").Select(c => c.Name).ToList();
             movieDto.Actors = movie.Credits.Cast.Select(c => c.Name).ToList();
-            movieDto.Image = client.GetImageUrl(sizes[3], movie.PosterPath).ToString();
+            if (!string.IsNullOrWhiteSpace(movie.PosterPath))
+                movieDto.Image = client.GetImageUrl(sizes[3], movie.PosterPath).ToString();
+            else
+                movieDto.Image = string.Empty;
 
             return movieDto;
         }
@@ -47,7 +50,7 @@ namespace Pinicules.Infrastructure.Repositories
                 Title = movie.Title,
                 Directors = movie.Credits.Crew.Where(c => c.Job == "Director").Select(c => c.Name).ToList(),
                 Actors = movie.Credits.Cast.Select(c => c.Name).ToList(),
-                Image = client.GetImageUrl(sizes.Last(), movie.PosterPath).ToString()
+                Image = (string.IsNullOrWhiteSpace(movie.PosterPath) ? string.Empty : client.GetImageUrl(sizes.Last(), movie.PosterPath).ToString())
             };
 
             return movieDto;

@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2013 for Web
+# Visual Studio 2013
 VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinicules.Presentation", "Pinicules.Presentation\Pinicules.Presentation.csproj", "{7B24B6AF-7CF9-4EC0-B937-735F5D08DB16}"
@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssertMVC", "3rdParty\Asser
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinicules.Domain", "Pinicules.Domain\Pinicules.Domain.csproj", "{854A75C3-4A3F-419A-A3DE-D2CE9508D266}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinicules.Infrastructure", "Pinicules.Infrastructure\Pinicules.Infrastructure.csproj", "{12512D17-A008-42F4-81B6-E303498E3535}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinicules.Data", "Pinicules.Infrastructure\Pinicules.Data.csproj", "{12512D17-A008-42F4-81B6-E303498E3535}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinicules.Domain.Tests", "Pinicules.Domain.Tests\Pinicules.Domain.Tests.csproj", "{C9B91861-0A0C-4138-919E-CF478CE544E6}"
 EndProject

@@ -3,7 +3,7 @@ using Microsoft.Practices.Unity;
 using Unity.Mvc5;
 using Pinicules.Domain.Services;
 using Pinicules.Domain.Repositories;
-using Pinicules.Infrastructure.Repositories;
+using Pinicules.Data.Repositories;
 
 namespace Pinicules.Presentation
 {
@@ -18,7 +18,10 @@ namespace Pinicules.Presentation
             
             // e.g. container.RegisterType<ITestService, TestService>();
 
-            container.RegisterType<IMoviesRepository, InMemoryMoviesRepository>();
+            //container.RegisterType<IMoviesRepository, InMemoryMoviesRepository>();
+
+            container.RegisterInstance<IMoviesRepository>(new InMemoryMoviesRepository());
+            
             container.RegisterTypes(AllClasses.FromLoadedAssemblies(),
                                     WithMappings.FromMatchingInterface,
                                     WithName.Default);

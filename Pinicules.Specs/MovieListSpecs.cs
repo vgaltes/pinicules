@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Pinicules.Domain.Repositories;
 using Pinicules.Domain.Services;
-using Pinicules.Infrastructure.Repositories;
+using Pinicules.Data.Repositories;
 using Pinicules.Presentation.Controllers;
 using Pinicules.Presentation.Models;
 using Pinicules.TestBuilders;

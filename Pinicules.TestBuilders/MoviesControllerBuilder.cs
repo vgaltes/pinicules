@@ -1,6 +1,6 @@
 ﻿using Pinicules.Domain.Repositories;
 using Pinicules.Domain.Services;
-using Pinicules.Infrastructure.Repositories;
+using Pinicules.Data.Repositories;
 using Pinicules.Presentation.Controllers;
 
 namespace Pinicules.TestBuilders

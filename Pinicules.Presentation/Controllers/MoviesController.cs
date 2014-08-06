@@ -32,7 +32,11 @@ namespace Pinicules.Presentation.Controllers
 
             var model = new MoviesSearchResult() 
             { 
-                Items = movies.Take(PAGE_SIZE).Select(m => new MovieSearchItem { Id = m.Id, Title = m.Title, Image = m.Image }).ToList(),
+                Items = movies.Take(PAGE_SIZE).Select(m => new MovieSearchItem { 
+                    Id = m.Id, 
+                    Title = m.Title, 
+                    Image = (string.IsNullOrWhiteSpace(m.Image) ? @Url.Content("~/Content/noMovieImage.png") : m.Image )
+                }).ToList(),
                 SearchTerm = searchTerm,
                 NextPage = page + 1
             };
@@ -59,7 +63,7 @@ namespace Pinicules.Presentation.Controllers
         public ActionResult Add(NewMovie newMovie)
         {
             moviesService.AddNewMovie(newMovie.MovieId, newMovie.Title);
-            return RedirectToAction("Movie", new { id = newMovie });
+            return RedirectToAction("Movie", new { id = newMovie.MovieId });
         }
 
         public ActionResult LookupMovies(string searchTerm)
@@ -67,7 +71,12 @@ namespace Pinicules.Presentation.Controllers
             var items = moviesService.LookupMovies(searchTerm);
 
             var model = new LookupMoviesResult();
-            model.Items = items.Select(i => new LookupMovieItem { Id = i.Id, Image = i.Image, Title = i.Title }).ToList();
+            model.Items = items.Select(i => new LookupMovieItem 
+            { 
+                Id = i.Id,
+                Image = (string.IsNullOrWhiteSpace(i.Image) ? @Url.Content("~/Content/noMovieImage.png") : i.Image), 
+                Title = i.Title 
+            }).ToList();
 
             return PartialView(model);
         }

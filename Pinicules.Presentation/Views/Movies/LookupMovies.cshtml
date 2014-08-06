@@ -1,0 +1,44 @@
+﻿@model Pinicules.Presentation.Models.LookupMoviesResult
+
+@if (Model.Items == null || Model.Items.Count == 0)
+{
+    <div>No results</div>
+}
+else
+{
+    <div class="container" id="searchResults">
+        <div class="row">
+            @{
+    int numItems = 0;
+            }
+            @foreach (var searchResultItem in Model.Items)
+            {
+                <div class="col-md-2 @((@numItems++ % 5) == 0 ? "col-md-offset-1" : "")">
+                    <div class="thumbnail">
+                        @*                        <a href="@Url.Action("Movie", new { id = searchResultItem.Id, previousSearch = Model.SearchTerm})">*@
+                        <img src="@searchResultItem.Image" alt="Sample Image">
+                        @*                      </a>*@
+                        <div class="caption">
+                            <p>@searchResultItem.Title</p>
+                            <p>
+                                @*<a href="@Url.Action("Add", new { MovieId = searchResultItem.Id, Title = searchResultItem.Title })"
+                                    class="btn btn-primary">Add</a>*@
+                                @using (Html.BeginForm("Add", "Movies", new { MovieId = searchResultItem.Id, Title = searchResultItem.Title }))
+                                {
+                                    <button type="submit" id="addMovie" class="btn btn-primary">ADD</button>
+                                }
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                if (((numItems) % 5) == 0)
+                {
+                    <br />
+                    <div class="clearfix"></div>
+                }
+            }
+        </div>
+    </div>
+}
+
