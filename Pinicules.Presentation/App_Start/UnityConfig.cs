@@ -13,15 +13,6 @@ namespace Pinicules.Presentation
         {
 			var container = new UnityContainer();
             
-            // register all your components with the container here
-            // it is NOT necessary to register your controllers
-            
-            // e.g. container.RegisterType<ITestService, TestService>();
-
-            //container.RegisterType<IMoviesRepository, InMemoryMoviesRepository>();
-
-            //container.RegisterInstance<IMoviesRepository>(new InMemoryMoviesRepository());
-            
             container.RegisterTypes(AllClasses.FromLoadedAssemblies(),
                                     WithMappings.FromMatchingInterface,
                                     WithName.Default);

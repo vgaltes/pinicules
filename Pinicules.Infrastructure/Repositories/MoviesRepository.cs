@@ -41,8 +41,11 @@ namespace Pinicules.Data.Repositories
 
         public void Add(int movieId, string title)
         {
-            this.moviesContext.Movies.Add(new Movie { Id = movieId, Title = title });
-            this.moviesContext.SaveChanges();
+            if (moviesContext.Movies.Find(movieId) == null)
+            {
+                this.moviesContext.Movies.Add(new Movie { Id = movieId, Title = title });
+                this.moviesContext.SaveChanges();
+            }
         }
     }
 }

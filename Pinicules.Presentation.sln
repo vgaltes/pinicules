@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinicules.TestBuilders", "P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinicules.Data.Tests", "Pinicules.Data.Tests\Pinicules.Data.Tests.csproj", "{AA0476B3-B924-4BC7-A3EF-85CAF37ACCDB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinicules.Importer", "Pinicules.Importer\Pinicules.Importer.csproj", "{10CE0A48-FBBE-4AAE-8F65-01117C5AD54C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{AA0476B3-B924-4BC7-A3EF-85CAF37ACCDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA0476B3-B924-4BC7-A3EF-85CAF37ACCDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA0476B3-B924-4BC7-A3EF-85CAF37ACCDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10CE0A48-FBBE-4AAE-8F65-01117C5AD54C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10CE0A48-FBBE-4AAE-8F65-01117C5AD54C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10CE0A48-FBBE-4AAE-8F65-01117C5AD54C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10CE0A48-FBBE-4AAE-8F65-01117C5AD54C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

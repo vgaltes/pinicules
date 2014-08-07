@@ -2,8 +2,9 @@
 
 <script type="text/javascript">
     function OnComplete(request, status) {
-        if ($('#loadMoreMoviesFormId').legth)
-            $('#loadMoreMoviesFormId').replaceWith($("#loadMoreMoviesFormId", request.responseText));
+        if ($('#loadMoreMoviesFormId').length) {
+            $('#loadMoreMoviesFormId').remove();
+        }
         else
             $('#loadMoreDiv').html($("#loadMoreMoviesFormId", request.responseText));
     }
