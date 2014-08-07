@@ -4,12 +4,20 @@
     function OnComplete(request, status) {
         $('.loadMoreMoviesForm').remove();
         $($('.loadMoreDiv')[$('.loadMoreDiv').length - 1]).html($(".loadMoreMoviesForm", request.responseText));
+
+        $('html,body').animate({
+            scrollTop: $($('.loadMoreDiv')[$('.loadMoreDiv').length - 1]).offset().top
+        }, 1000);
+    }
+
+    function OnBegin(request, status) {
+        $('#loadMoreMovies').button('loading');
     }
 </script>
 
 @if (Model.Items == null || Model.Items.Count == 0)
 {
-    <div>No results</div>
+    <div>@WebResources.NoResults</div>
 }
 else
 {
@@ -44,9 +52,13 @@ else
                 UpdateTargetId = "searchMoviesResults",
                 InsertionMode = InsertionMode.InsertAfter,
                 OnComplete = "OnComplete",
+                OnBegin = "OnBegin"
             }, new { @class = "loadMoreMoviesForm" }))
             {
-                <button type="submit" id="loadMoreMovies" class="btn btn-primary col-md-2 col-md-offset-5">LOAD MORE</button>
+                <button type="submit" id="loadMoreMovies" class="btn btn-primary col-md-2 col-md-offset-5"
+                        data-loading-text="@WebResources.Loading <i class='fa fa-spinner fa-spin'></i>">
+                    @WebResources.LoadMore
+                </button>
             }
 
         }

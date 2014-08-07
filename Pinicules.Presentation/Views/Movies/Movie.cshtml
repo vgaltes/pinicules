@@ -4,7 +4,7 @@
     ViewBag.Title = Model.Title;
 }
 <ul class="breadcrumb">
-    <li>@Html.ActionLink("Busqueda", "Search", new { searchTerm = Model.PreviousSearch})</li>
+    <li>@Html.ActionLink(@WebResources.BreadcumbSearch, "Search", new { searchTerm = Model.PreviousSearch })</li>
     <li class="active">@Model.Title</li>
 </ul>
 
@@ -19,7 +19,7 @@
             <div class="row form-horizontal">
                     <div class="form-group">
                         <div class="col-md-2">
-                            <label class="control-label col-md-2">Titulo</label>
+                            <label class="control-label col-md-2">@WebResources.MovieTitle</label>
                         </div>
                         <div class="col-md-10">
                             <p class="form-control-static">@Model.Title</p>
@@ -29,7 +29,7 @@
             <div class="row form-horizontal">
                 <div class="form-group">
                     <div class="col-md-2">
-                        <label class="control-label col-md-2">Resumen</label>
+                        <label class="control-label col-md-2">@WebResources.MovieSummary</label>
                     </div>
                     <div class="col-md-10">
                         <p class="form-control-static">@Model.Summary</p>
@@ -39,7 +39,7 @@
             <div class="row form-horizontal">
                 <div class="form-group">
                     <div class="col-md-2">
-                        <label class="control-label col-md-2">Director(es)</label>
+                        <label class="control-label col-md-2">@WebResources.MovieDirector</label>
                     </div>
                     <div class="col-md-10">
                         <p class="form-control-static">@string.Join(", ", Model.Directors.ToArray())</p>
@@ -49,7 +49,7 @@
             <div class="row form-horizontal">
                 <div class="form-group">
                     <div class="col-md-2">
-                        <label class="control-label col-md-2">Reparto</label>
+                        <label class="control-label col-md-2">@WebResources.MovieActors</label>
                     </div>
                     <div class="col-md-10">
                         <p class="form-control-static">@string.Join(", ", Model.Actors.ToArray())</p>
@@ -60,3 +60,6 @@
     </div>
 </div>
 
+@section NewMovie{
+    @Html.Partial("NewMovieButton")
+}

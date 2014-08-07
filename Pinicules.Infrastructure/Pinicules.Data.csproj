@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Movie.cs" />
+    <Compile Include="Infrastructure\IMoviesContext.cs" />
     <Compile Include="Infrastructure\MoviesContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\InMemoryMoviesRepository.cs" />

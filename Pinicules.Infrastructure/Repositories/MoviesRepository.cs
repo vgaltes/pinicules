@@ -10,9 +10,9 @@ namespace Pinicules.Data.Repositories
 {
     public class MoviesRepository : IMoviesRepository
     {
-        MoviesContext moviesContext;
+        private readonly IMoviesContext moviesContext;
 
-        public MoviesRepository(MoviesContext moviesContext)
+        public MoviesRepository(IMoviesContext moviesContext)
         {
             this.moviesContext = moviesContext;
         }
@@ -44,7 +44,7 @@ namespace Pinicules.Data.Repositories
             if (moviesContext.Movies.Find(movieId) == null)
             {
                 this.moviesContext.Movies.Add(new Movie { Id = movieId, Title = title });
-                this.moviesContext.SaveChanges();
+                this.moviesContext.Save();
             }
         }
     }
