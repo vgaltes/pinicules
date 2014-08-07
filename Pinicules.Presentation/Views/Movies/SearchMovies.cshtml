@@ -2,11 +2,8 @@
 
 <script type="text/javascript">
     function OnComplete(request, status) {
-        if ($('#loadMoreMoviesFormId').length) {
-            $('#loadMoreMoviesFormId').remove();
-        }
-        else
-            $('#loadMoreDiv').html($("#loadMoreMoviesFormId", request.responseText));
+        $('.loadMoreMoviesForm').remove();
+        $($('.loadMoreDiv')[$('.loadMoreDiv').length - 1]).html($(".loadMoreMoviesForm", request.responseText));
     }
 </script>
 
@@ -39,7 +36,7 @@ else
             }
         </div>
     </div>
-    <div id="loadMoreDiv">
+    <div class="loadMoreDiv">
         @if (Model.LoadMore)
         {
             using (Ajax.BeginForm("SearchMovies", "Movies", new { page = Model.NextPage }, new AjaxOptions
@@ -47,7 +44,7 @@ else
                 UpdateTargetId = "searchMoviesResults",
                 InsertionMode = InsertionMode.InsertAfter,
                 OnComplete = "OnComplete",
-            }, new { id = "loadMoreMoviesFormId" }))
+            }, new { @class = "loadMoreMoviesForm" }))
             {
                 <button type="submit" id="loadMoreMovies" class="btn btn-primary col-md-2 col-md-offset-5">LOAD MORE</button>
             }
@@ -55,4 +52,3 @@ else
         }
     </div>
 }
-
