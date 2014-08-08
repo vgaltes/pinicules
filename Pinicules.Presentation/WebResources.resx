@@ -120,6 +120,9 @@
   <data name="AddInformation" xml:space="preserve">
     <value>Introduce el titulo de la pelicula para buscarla en la base de datos de TMDB. Cuando encuentres la pelicula la podras anyadir a tu coleccion.</value>
   </data>
+  <data name="AddTitle" xml:space="preserve">
+    <value>Nueva pelicula</value>
+  </data>
   <data name="AnadirPelicula" xml:space="preserve">
     <value>Anadir</value>
   </data>
@@ -154,7 +157,7 @@
     <value>Busca</value>
   </data>
   <data name="SearchPlaceholder" xml:space="preserve">
-    <value>Busca&amp;hellip;</value>
+    <value>Busca...</value>
   </data>
   <data name="SiteAuthor" xml:space="preserve">
     <value>by Vincent</value>

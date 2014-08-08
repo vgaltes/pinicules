@@ -156,6 +156,7 @@
     <Content Include="Views\Movies\Search.cshtml" />
     <Content Include="Views\Movies\LookupMovies.cshtml" />
     <Content Include="Views\Shared\NewMovieButton.cshtml" />
+    <Content Include="StaticViews\Error.html" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

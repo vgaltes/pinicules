@@ -3,8 +3,6 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@WebResources.SiteTitle</title>
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
@@ -13,20 +11,18 @@
 </head>
 <body>
     <div class="container body-content">
-        <header class="page-header">
-            <div class="row">
-                <div class="col-md-2 text-center"></div>
-                <div class="col-md-8 text-center"><h1>@WebResources.SiteTitle <small>@WebResources.SiteAuthor</small></h1></div>
-                @RenderSection("NewMovie", false)
-                <div class="clearfix visible-md-block"></div>
+        <div class="row">
+            <div class="col-md-2 col-md-offset-1">
+                <p>
+                    <i class="fa fa-bomb fa-5x"></i>
+                </p>
             </div>
-        </header>
-
-        @RenderBody()
+            <div class="col-md-6 col-md-offset-1"><h2>Algo ha ido mal.</h2></div>
+        </div>
     </div>
-
+    
+    
     
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
 </body>
 </html>

@@ -70,6 +70,15 @@ namespace Pinicules.Presentation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nueva pelicula.
+        /// </summary>
+        public static string AddTitle {
+            get {
+                return ResourceManager.GetString("AddTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Anadir.
         /// </summary>
         public static string AnadirPelicula {
@@ -169,7 +178,7 @@ namespace Pinicules.Presentation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Busca&amp;hellip;.
+        ///   Looks up a localized string similar to Busca....
         /// </summary>
         public static string SearchPlaceholder {
             get {
