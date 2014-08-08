@@ -125,8 +125,10 @@
     <Content Include="Views\Shared\SearchInput.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -157,6 +159,7 @@
     <Content Include="Views\Movies\LookupMovies.cshtml" />
     <Content Include="Views\Shared\NewMovieButton.cshtml" />
     <Content Include="StaticViews\Error.html" />
+    <Content Include="Views\Auth\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
