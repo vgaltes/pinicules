@@ -2,6 +2,7 @@
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security;
 using Pinicules.Presentation.Identity;
 using Pinicules.Presentation.Models;
 
@@ -28,6 +29,30 @@ namespace Pinicules.Presentation.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public async Task<ActionResult> LogIn(LogInModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            var user = await userManager.FindAsync(model.UserName, model.Password);
+
+            if (user != null)
+            {
+                var identity = await userManager.CreateIdentityAsync(
+                    user, DefaultAuthenticationTypes.ApplicationCookie);
+
+                GetAuthenticationManager().SignIn(identity);
+
+                return Redirect(GetRedirectUrl(model.ReturnUrl));
+            }
+
+            // user authN failed
+            ModelState.AddModelError("", "Invalid email or password");
+            return View();
+        }
         [HttpGet]
         public ActionResult Register(string returnUrl)
         {
@@ -54,7 +79,7 @@ namespace Pinicules.Presentation.Controllers
             if (result.Succeeded)
             {
                 await SignIn(user);
-                return RedirectToAction("index", "home");
+                return RedirectToAction("Search", "Movies");
             }
 
             foreach (var error in result.Errors)
@@ -65,13 +90,33 @@ namespace Pinicules.Presentation.Controllers
             return View();
         }
 
+        public ActionResult Logout()
+        {
+            GetAuthenticationManager().SignOut();
+            return RedirectToAction("Search", "Movies");
+        }
+
         private async Task SignIn(AppUser user)
         {
             var identity = await userManager.CreateIdentityAsync(
                 user, DefaultAuthenticationTypes.ApplicationCookie);
 
-            var authenticationManager = HttpContext.GetOwinContext().Authentication;
-            authenticationManager.SignIn(identity);
+            GetAuthenticationManager().SignIn(identity);
+        }
+
+        IAuthenticationManager GetAuthenticationManager()
+        {
+            return HttpContext.GetOwinContext().Authentication;
+        }
+
+        private string GetRedirectUrl(string returnUrl)
+        {
+            if (string.IsNullOrEmpty(returnUrl) || !Url.IsLocalUrl(returnUrl))
+            {
+                return Url.Action("Search", "Movies");
+            }
+
+            return returnUrl;
         }
     }
 }

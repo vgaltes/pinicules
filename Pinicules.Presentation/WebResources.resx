@@ -168,10 +168,16 @@
   <data name="GoToRegister" xml:space="preserve">
     <value>No estas registrado?</value>
   </data>
+  <data name="Greeting" xml:space="preserve">
+    <value>Hola</value>
+  </data>
   <data name="Login" xml:space="preserve">
     <value>Login</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Date de alta</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Desconectar</value>
   </data>
 </root>

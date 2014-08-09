@@ -106,6 +106,15 @@ namespace Pinicules.Presentation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hola.
+        /// </summary>
+        public static string Greeting {
+            get {
+                return ResourceManager.GetString("Greeting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CARGANDO....
         /// </summary>
         public static string Loading {
@@ -129,6 +138,15 @@ namespace Pinicules.Presentation {
         public static string Login {
             get {
                 return ResourceManager.GetString("Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Desconectar.
+        /// </summary>
+        public static string Logout {
+            get {
+                return ResourceManager.GetString("Logout", resourceCulture);
             }
         }
         

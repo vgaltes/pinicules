@@ -15,7 +15,17 @@
     <div class="container body-content">
         <header class="page-header">
             <div class="row">
-                <div class="col-md-2 text-center"></div>
+                <div class="col-md-2 text-center">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <div>
+                            @WebResources.Greeting @User.Identity.Name
+                        </div>
+                        <div>
+                            @Html.ActionLink(@WebResources.Logout, "Logout", "Auth")
+                        </div>
+                    }
+                </div>
                 <div class="col-md-8 text-center"><h1>@WebResources.SiteTitle <small>@WebResources.SiteAuthor</small></h1></div>
                 @RenderSection("NewMovie", false)
                 <div class="clearfix visible-md-block"></div>
@@ -25,7 +35,7 @@
         @RenderBody()
     </div>
 
-    
+
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
 </body>
