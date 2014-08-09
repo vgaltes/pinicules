@@ -97,6 +97,15 @@ namespace Pinicules.Presentation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No estas registrado?.
+        /// </summary>
+        public static string GoToRegister {
+            get {
+                return ResourceManager.GetString("GoToRegister", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CARGANDO....
         /// </summary>
         public static string Loading {
@@ -111,6 +120,15 @@ namespace Pinicules.Presentation {
         public static string LoadMore {
             get {
                 return ResourceManager.GetString("LoadMore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login.
+        /// </summary>
+        public static string Login {
+            get {
+                return ResourceManager.GetString("Login", resourceCulture);
             }
         }
         
@@ -165,6 +183,15 @@ namespace Pinicules.Presentation {
         public static string NoResults {
             get {
                 return ResourceManager.GetString("NoResults", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date de alta.
+        /// </summary>
+        public static string Register {
+            get {
+                return ResourceManager.GetString("Register", resourceCulture);
             }
         }
         

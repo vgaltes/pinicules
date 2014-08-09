@@ -1,11 +1,11 @@
-﻿@model Pinicules.Presentation.Models.LogInModel
+﻿@model Pinicules.Presentation.Models.RegisterModel
 
 @{
-    ViewBag.Title = @WebResources.Login;
+    ViewBag.Title = @WebResources.Register;
 }
 
 <div class="col-md-3 col-md-offset-1">
-    <h2>@WebResources.Login</h2>
+    <h2>@WebResources.Register</h2>
 </div>
 <div class="clearfix"></div>
 
@@ -32,14 +32,10 @@
             </div>
         </div>
 
-        @Html.HiddenFor(model => model.ReturnUrl)
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="@WebResources.Login" class="btn btn-default btn-primary" />
+                <input type="submit" value="@WebResources.Register" class="btn btn-default btn-primary" />
             </div>
         </div>
     </div>
 }
-
-<div class="col-md-4 col-md-offset-2">@WebResources.GoToRegister @Html.ActionLink(WebResources.Register, "Register")</div>
