@@ -14,5 +14,14 @@ namespace Pinicules.Data.Entities
         public int Id { get; set; }
 
         public string Title { get; set; }
+
+        public virtual ICollection<Category> Categories {get;set;}
+    }
+
+    public class Category
+    {
+        public int IdMovie { get; set; }
+
+        public string Name { get; set; }
     }
 }

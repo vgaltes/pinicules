@@ -52,5 +52,10 @@ namespace Pinicules.Domain.Services
         {
             return tmdbRepository.LookupMovies(searchTerm);
         }
+
+        public void AddCategoryToMovie(string category, int idMovie)
+        {
+            moviesRepository.AddCategoryToMovie(category, idMovie);
+        }
     }
 }

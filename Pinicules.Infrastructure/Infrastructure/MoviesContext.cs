@@ -13,5 +13,18 @@ namespace Pinicules.Data.Infrastructure
         {
             this.SaveChanges();
         }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Movie>()
+                .HasMany(a => a.Categories)
+                .WithMany()
+                .Map(x =>
+                {
+                    x.MapLeftKey("Movie_Id");
+                    x.MapRightKey("Category_Id");
+                    x.ToTable("MovieCategories");
+                });
+        }
     }
 }

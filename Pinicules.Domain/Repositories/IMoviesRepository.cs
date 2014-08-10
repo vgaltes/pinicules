@@ -8,5 +8,7 @@ namespace Pinicules.Domain.Repositories
         List<MovieDTO> GetMovies(string searchTerm, int numItems, int page, int pageSize);
 
         void Add(int movieId, string title);
+
+        void AddCategoryToMovie(string category, int idMovie);
     }
 }

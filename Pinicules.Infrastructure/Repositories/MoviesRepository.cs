@@ -47,5 +47,11 @@ namespace Pinicules.Data.Repositories
                 this.moviesContext.Save();
             }
         }
+
+
+        public void AddCategoryToMovie(string category, int idMovie)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
