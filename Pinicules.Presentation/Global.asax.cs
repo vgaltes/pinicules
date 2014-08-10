@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace Pinicules.Presentation
@@ -11,6 +12,19 @@ namespace Pinicules.Presentation
             UnityConfig.RegisterComponents();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            //EntityFrameworkConfig.SetInitializer();
         }
+
+        void Application_Error(object sender, EventArgs e)
+        {
+            // Code that runs when an unhandled error occurs
+
+            // Get the exception object.
+            Exception exc = Server.GetLastError();
+
+            // Clear the error from the server
+            Server.ClearError();
+        }
+
     }
 }

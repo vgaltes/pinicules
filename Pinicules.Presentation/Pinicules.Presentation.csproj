@@ -158,6 +158,7 @@
     <Content Include="Views\Shared\SearchInput.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\EntityFrameworkConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
@@ -168,6 +169,11 @@
     </Compile>
     <Compile Include="Identity\AppDbContext.cs" />
     <Compile Include="Identity\AppUser.cs" />
+    <Compile Include="Migrations\201408091738227_InitialCreate.cs" />
+    <Compile Include="Migrations\201408091738227_InitialCreate.Designer.cs">
+      <DependentUpon>201408091738227_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\LookupMoviesResult.cs" />
     <Compile Include="Models\MovieItem.cs" />
@@ -220,6 +226,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\201408091738227_InitialCreate.resx">
+      <DependentUpon>201408091738227_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WebResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>WebResources.Designer.cs</LastGenOutput>

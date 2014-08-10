@@ -35,7 +35,7 @@ namespace Pinicules.Data.Repositories
                     .OrderBy(m=>m.Title)
                     .Skip((page - 1) * pageSize)
                     .Take(numItems)
-                    .Select(m => new MovieDTO{Id = m.Id, Title = m.Title})
+                    .Select(m => new MovieDTO{Id = m.Id, Title = m.Title, Categories = m.Categories.Select(c => c.Name).ToList()})
                     .ToList();
         }
 
@@ -61,6 +61,14 @@ namespace Pinicules.Data.Repositories
                     this.moviesContext.Save();
                 }
             }
+        }
+
+
+        public List<string> GetCategoriesFromMovie(int movieId)
+        {
+            Movie movie = moviesContext.Movies.Find(movieId);
+
+            return movie.Categories.Select(c => c.Name).ToList();
         }
     }
 }

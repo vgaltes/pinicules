@@ -10,5 +10,7 @@ namespace Pinicules.Domain.Repositories
         void Add(int movieId, string title);
 
         void AddCategoryToMovie(string category, int idMovie);
+
+        List<string> GetCategoriesFromMovie(int movieId);
     }
 }

@@ -46,5 +46,11 @@ namespace Pinicules.Data.Repositories
         {
             throw new NotImplementedException();
         }
+
+
+        public List<string> GetCategoriesFromMovie(int movieId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
