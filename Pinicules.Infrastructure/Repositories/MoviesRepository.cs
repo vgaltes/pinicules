@@ -76,7 +76,9 @@ namespace Pinicules.Data.Repositories
         {
             Movie movie = moviesContext.Movies.Find(idMovie);
 
-            movie.Categories.Remove(new Category { IdMovie = idMovie, Name = category });
+            movie.Categories.Remove(movie.Categories.First(c => c.Name == category));
+
+            this.moviesContext.Save();
         }
     }
 }

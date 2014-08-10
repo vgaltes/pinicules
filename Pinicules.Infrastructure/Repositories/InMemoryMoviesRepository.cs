@@ -54,7 +54,7 @@ namespace Pinicules.Data.Repositories
         }
 
 
-        public object RemoveCategoryFromMovie(string category, int idMovie)
+        public void RemoveCategoryFromMovie(string category, int idMovie)
         {
             throw new NotImplementedException();
         }

@@ -64,7 +64,7 @@ namespace Pinicules.Presentation.Controllers
         [HttpPost]
         public ActionResult CategoryRemove(int idMovie, string category)
         {
-            int pp = 0;
+            moviesService.RemoveCategoryFromMovie(category, idMovie);
             return new HttpStatusCodeResult(200);
         }
 

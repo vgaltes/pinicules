@@ -13,6 +13,6 @@ namespace Pinicules.Domain.Repositories
 
         List<string> GetCategoriesFromMovie(int movieId);
 
-        object RemoveCategoryFromMovie(string category, int idMovie);
+        void RemoveCategoryFromMovie(string category, int idMovie);
     }
 }
