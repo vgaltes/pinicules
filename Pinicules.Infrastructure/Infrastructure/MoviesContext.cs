@@ -25,6 +25,9 @@ namespace Pinicules.Data.Infrastructure
                     x.MapRightKey("Category_Id");
                     x.ToTable("MovieCategories");
                 });
+
+            modelBuilder.Entity<Category>()
+                .HasKey(c => c.Name);
         }
     }
 }

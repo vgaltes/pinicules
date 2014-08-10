@@ -57,7 +57,7 @@ namespace Pinicules.Presentation.Controllers
         [HttpPost]
         public ActionResult CategoryAdd(int idMovie, string category)
         {
-            int pp = 0;
+            moviesService.AddCategoryToMovie(category, idMovie);
             return new HttpStatusCodeResult(200);
         }
 

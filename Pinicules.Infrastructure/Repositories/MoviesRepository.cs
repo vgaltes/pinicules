@@ -51,7 +51,16 @@ namespace Pinicules.Data.Repositories
 
         public void AddCategoryToMovie(string category, int idMovie)
         {
-            throw new NotImplementedException();
+            Movie movie = moviesContext.Movies.Find(idMovie);
+
+            if (movie != null)
+            {
+                if (!movie.Categories.Any(c => c.Name == category))
+                {
+                    movie.Categories.Add(new Category { IdMovie = idMovie, Name = category });
+                    this.moviesContext.Save();
+                }
+            }
         }
     }
 }
