@@ -38,7 +38,9 @@ namespace Pinicules.Domain.Services
 
         public MovieDTO GetMovie(int movieId)
         {
-            return tmdbRepository.GetMovieInformation(movieId);
+            MovieDTO movie = tmdbRepository.GetMovieInformation(movieId);
+            movie.Categories = new List<string>();
+            return movie;
         }
 
         public void AddNewMovie(int movieId, string title)

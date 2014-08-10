@@ -114,5 +114,20 @@ namespace Pinicules.Domain.Tests
 
             tmdbRepositoryMock.Verify(t => t.LookupMovies("search term"));
         }
+
+        [TestMethod]
+        public void AddCategoryShoulCallMoviesRepository()
+        {
+            var movieRepositoryMock = new Mock<IMoviesRepository>();
+            var tmdbRepositoryMock = new Mock<ITmdbRepository>();
+
+            var moviesService = new MoviesService(movieRepositoryMock.Object, tmdbRepositoryMock.Object);
+            int idMovie = 1;
+            string category = "category";
+
+            moviesService.AddCategoryToMovie(category, idMovie);
+
+            movieRepositoryMock.Verify(mrm => mrm.AddCategoryToMovie(category, idMovie));
+        }
     }
 }

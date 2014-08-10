@@ -54,6 +54,20 @@ namespace Pinicules.Presentation.Controllers
             return View(movie);
         }
 
+        [HttpPost]
+        public ActionResult CategoryAdd(int idMovie, string category)
+        {
+            int pp = 0;
+            return new HttpStatusCodeResult(200);
+        }
+
+        [HttpPost]
+        public ActionResult CategoryRemove(int idMovie, string category)
+        {
+            int pp = 0;
+            return new HttpStatusCodeResult(200);
+        }
+
         public ActionResult Add()
         {
             return View();

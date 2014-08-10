@@ -56,10 +56,52 @@
                     </div>
                 </div>
             </div>
+            <div class="row form-horizontal">
+                <div class="form-group">
+                    <div class="col-md-2">
+                        <label class="control-label col-md-2">@WebResources.MovieCategories</label>
+                    </div>
+                    <div class="col-md-10">
+                        <input class="col-md-12" type="text" id="categories" value="@string.Join(", ", Model.Categories.ToArray())" />
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
 @section NewMovie{
     @Html.Partial("NewMovieButton")
+}
+
+@section Scripts{
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="~/Scripts/tag-it.js" type="text/javascript"></script>
+    <script>
+    function sendAjaxRequest(httpMethod, url, reqData) {
+        console.log(reqData);
+        $.ajax({
+            type: httpMethod,
+            url: url,
+            data: reqData
+        })
+    };
+
+    $('#categories').tagit({
+        allowSpaces: true,
+        afterTagAdded: function (evt, ui) {
+            if (!ui.duringInitialization) {
+                sendAjaxRequest("POST", '@Url.Action("CategoryAdd", "Movies")', {idMovie: @Model.Id, category: $('#categories').tagit('tagLabel', ui.tag)});
+                }
+            },
+            afterTagRemoved: function(evt, ui) {
+                sendAjaxRequest("POST", '@Url.Action("CategoryRemove", "Movies")', {idMovie: @Model.Id, category: $('#categories').tagit('tagLabel', ui.tag)});
+            },
+        });
+    </script> 
+}
+
+@section Styles{
+    <link href="~/Content/jquery.tagit.css" rel="stylesheet" />
+    <link href="~/Content/tagit.ui-zendesk.css" rel="stylesheet" />
 }

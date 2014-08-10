@@ -180,4 +180,7 @@
   <data name="Logout" xml:space="preserve">
     <value>Desconectar</value>
   </data>
+  <data name="MovieCategories" xml:space="preserve">
+    <value>Categorias</value>
+  </data>
 </root>

@@ -160,6 +160,15 @@ namespace Pinicules.Presentation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Categorias.
+        /// </summary>
+        public static string MovieCategories {
+            get {
+                return ResourceManager.GetString("MovieCategories", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Director(es).
         /// </summary>
         public static string MovieDirector {

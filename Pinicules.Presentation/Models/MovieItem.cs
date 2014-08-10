@@ -10,13 +10,17 @@ namespace Pinicules.Presentation.Models
     {
         public MovieItem(MovieDTO movieDTO, string previousSearch)
         {
+            this.Id = movieDTO.Id;
             this.Title = movieDTO.Title;
             this.Actors = movieDTO.Actors;
             this.Directors = movieDTO.Directors;
             this.Image = movieDTO.Image;
             this.Summary = movieDTO.Summary;
             this.PreviousSearch = previousSearch;
+            this.Categories = movieDTO.Categories;
         }
+
+        public int Id { get; set; }
 
         public string Title { get; set; }
 
@@ -29,5 +33,7 @@ namespace Pinicules.Presentation.Models
         public string Image { get; set; }
 
         public string Summary { get; set; }
+
+        public List<string> Categories { get; set; }
     }
 }
