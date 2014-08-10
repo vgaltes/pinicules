@@ -14,5 +14,7 @@ namespace Pinicules.Domain.Services
         List<MovieDTO> LookupMovies(string searchTerm);
 
         void AddCategoryToMovie(string category, int idMovie);
+
+        void RemoveCategoryFromMovie(string category, int idMovie);
     }
 }

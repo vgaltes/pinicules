@@ -57,5 +57,10 @@ namespace Pinicules.Domain.Services
         {
             moviesRepository.AddCategoryToMovie(category, idMovie);
         }
+
+        public void RemoveCategoryFromMovie(string category, int idMovie)
+        {
+            moviesRepository.RemoveCategoryFromMovie(category, idMovie);
+        }
     }
 }

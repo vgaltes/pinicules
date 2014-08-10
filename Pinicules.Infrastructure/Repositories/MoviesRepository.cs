@@ -70,5 +70,13 @@ namespace Pinicules.Data.Repositories
 
             return movie.Categories.Select(c => c.Name).ToList();
         }
+
+
+        public void RemoveCategoryFromMovie(string category, int idMovie)
+        {
+            Movie movie = moviesContext.Movies.Find(idMovie);
+
+            movie.Categories.Remove(new Category { IdMovie = idMovie, Name = category });
+        }
     }
 }
