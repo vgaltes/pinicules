@@ -173,6 +173,10 @@
     <Compile Include="Migrations\201408091738227_InitialCreate.Designer.cs">
       <DependentUpon>201408091738227_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201408111024040_SeedAdminUsers.cs" />
+    <Compile Include="Migrations\201408111024040_SeedAdminUsers.Designer.cs">
+      <DependentUpon>201408111024040_SeedAdminUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\LookupMoviesResult.cs" />
@@ -228,6 +232,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201408091738227_InitialCreate.resx">
       <DependentUpon>201408091738227_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408111024040_SeedAdminUsers.resx">
+      <DependentUpon>201408111024040_SeedAdminUsers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WebResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
