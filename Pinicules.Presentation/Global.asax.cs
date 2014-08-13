@@ -22,6 +22,10 @@ namespace Pinicules.Presentation
             // Get the exception object.
             Exception exc = Server.GetLastError();
 
+            Response.Write("<h2>Global Page Error</h2>\n");
+            Response.Write(
+                "<p>" + exc.Message + "</p>\n");
+
             // Clear the error from the server
             Server.ClearError();
         }

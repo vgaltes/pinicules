@@ -7,6 +7,7 @@ using Pinicules.Presentation.Controllers;
 using Pinicules.Presentation.Models;
 using Pinicules.TestBuilders;
 using System.Web.Mvc;
+using System.Collections.Generic;
 
 namespace Pinicules.Specs
 {
@@ -57,6 +58,16 @@ namespace Pinicules.Specs
         public void When_Looking_For_Spiderman_Should_Return_One_Result()
         {
             ActionResult result = moviesController.SearchMovies(1, "Spiderman");
+
+            MoviesSearchResult model = result.ShouldBe<PartialViewResult>().WithModel().OfType<MoviesSearchResult>();
+            Assert.IsFalse(model.LoadMore);
+            Assert.AreEqual(1, model.Items.Count);
+        }
+
+        [TestMethod]
+        public void When_Looking_For_Category_Drama_Should_Return_One_Result()
+        {
+            ActionResult result = moviesController.SearchMovies(1, new List<string> { "drama" }, "");
 
             MoviesSearchResult model = result.ShouldBe<PartialViewResult>().WithModel().OfType<MoviesSearchResult>();
             Assert.IsFalse(model.LoadMore);
