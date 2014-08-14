@@ -63,6 +63,10 @@
     <Compile Include="Migrations\201408102018569_AddedCategory.Designer.cs">
       <DependentUpon>201408102018569_AddedCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201408131610435_Remove IDMovie from Categories.cs" />
+    <Compile Include="Migrations\201408131610435_Remove IDMovie from Categories.Designer.cs">
+      <DependentUpon>201408131610435_Remove IDMovie from Categories.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\InMemoryMoviesRepository.cs" />
@@ -85,6 +89,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201408102018569_AddedCategory.resx">
       <DependentUpon>201408102018569_AddedCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408131610435_Remove IDMovie from Categories.resx">
+      <DependentUpon>201408131610435_Remove IDMovie from Categories.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

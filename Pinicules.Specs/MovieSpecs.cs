@@ -6,6 +6,7 @@ using Pinicules.TestBuilders;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Collections.Generic;
 
 namespace Pinicules.Specs
 {
@@ -23,7 +24,7 @@ namespace Pinicules.Specs
             var result = moviesController.Movie(100402);
 
             MovieItem model = result.ShouldBe<ViewResult>().WithModel().OfType<MovieItem>();
-            Assert.AreEqual("Capitán América: El soldado de invierno", model.Title);
+            Assert.AreEqual("Capitán América: El Soldado de Invierno", model.Title);
             Assert.AreEqual(19, model.Actors.Count);
             Assert.AreEqual(2, model.Directors.Count);
         }
@@ -50,7 +51,7 @@ namespace Pinicules.Specs
 
             moviesController.Add(new NewMovie(124905, "Godzilla"));
 
-            ActionResult result = moviesController.SearchMovies(2);
+            ActionResult result = moviesController.SearchMovies(2, new List<string>());
 
             MoviesSearchResult model = result.ShouldBe<PartialViewResult>().WithModel().OfType<MoviesSearchResult>();
             Assert.AreEqual(6, model.Items.Count);

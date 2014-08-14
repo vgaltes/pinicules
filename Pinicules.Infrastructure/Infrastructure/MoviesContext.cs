@@ -9,6 +9,8 @@ namespace Pinicules.Data.Infrastructure
 
         public DbSet<Movie> Movies { get; set; }
 
+        public DbSet<Category> Categories { get; set; }
+
         public void Save()
         {
             this.SaveChanges();

@@ -5,7 +5,7 @@ namespace Pinicules.Domain.Repositories
 {
     public interface IMoviesRepository
     {
-        List<MovieDTO> GetMovies(string searchTerm, int numItems, int page, int pageSize);
+        List<MovieDTO> GetMovies(string searchTerm, List<string> categories, int numItems, int page, int pageSize);
 
         void Add(int movieId, string title);
 

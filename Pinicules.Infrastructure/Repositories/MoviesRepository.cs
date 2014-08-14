@@ -17,9 +17,10 @@ namespace Pinicules.Data.Repositories
             this.moviesContext = moviesContext;
         }
  
-        public List<MovieDTO> GetMovies(string searchTerm, int numItems, int page, int pageSize)
+        public List<MovieDTO> GetMovies(string searchTerm, List<string> categories, int numItems, int page, int pageSize)
         {
             Func<Movie, bool> filter;
+            Func<Movie, bool> categoriesFilter;
 
             if (string.IsNullOrWhiteSpace(searchTerm))
             {
@@ -30,12 +31,27 @@ namespace Pinicules.Data.Repositories
                 filter = new Func<Movie,bool>(m => m.Title.ToLower().Contains(searchTerm.ToLower() ));
             }
 
-            return this.moviesContext.Movies
+            if (categories == null || !categories.Any())
+            {
+                categoriesFilter = new Func<Movie, bool>(m => true);
+            }
+            else
+            {
+                categoriesFilter = new Func<Movie, bool>(m =>
+                    m.Categories.Select(c => c.Name).Intersect(categories).Any()
+                );
+            }
+
+            return this.moviesContext.Movies.Include("Categories")
                     .Where(filter) 
+                    .Where(categoriesFilter)
                     .OrderBy(m=>m.Title)
                     .Skip((page - 1) * pageSize)
                     .Take(numItems)
-                    .Select(m => new MovieDTO{Id = m.Id, Title = m.Title, Categories = m.Categories.Select(c => c.Name).ToList()})
+                    .Select(m => new MovieDTO{
+                        Id = m.Id, 
+                        Title = m.Title, 
+                        Categories = (m.Categories == null ? new List<string>() : m.Categories.Select(c => c.Name).ToList())})
                     .ToList();
         }
 
@@ -57,7 +73,7 @@ namespace Pinicules.Data.Repositories
             {
                 if (!movie.Categories.Any(c => c.Name == category))
                 {
-                    movie.Categories.Add(new Category { IdMovie = idMovie, Name = category });
+                    movie.Categories.Add(new Category { Name = category });
                     this.moviesContext.Save();
                 }
             }

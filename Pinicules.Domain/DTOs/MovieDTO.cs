@@ -10,6 +10,7 @@ namespace Pinicules.Domain.DTOs
 
         public MovieDTO()
         {
+            Categories = new List<string>();
         }
 
         public MovieDTO(int id, string comments, float rating)
