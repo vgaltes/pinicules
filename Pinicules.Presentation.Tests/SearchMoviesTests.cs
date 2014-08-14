@@ -23,7 +23,6 @@ namespace Pinicules.Presentation.Tests
 
             var moviesController = new MoviesControllerBuilder()
                                         .WithMemoryMoviesRepository(mockMoviesRepository.Object)
-                                        .WithTmdbRepository()
                                         .Build();
 
             var result = moviesController.Search();
