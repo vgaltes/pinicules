@@ -97,16 +97,9 @@ namespace Pinicules.Data.Repositories
             this.moviesContext.Save();
         }
 
-
-        public List<Category> GetCategories()
-        {
-            throw new NotImplementedException();
-        }
-
-
         List<string> IMoviesRepository.GetCategories()
         {
-            throw new NotImplementedException();
+            return moviesContext.Categories.Select(c => c.Name).ToList();
         }
     }
 }

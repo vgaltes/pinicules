@@ -8,6 +8,8 @@ namespace Pinicules.Data.Infrastructure
     {
         DbSet<Movie> Movies { get; set; }
 
+        DbSet<Category> Categories { get; set; }
+
         void Save();
     }
 }
