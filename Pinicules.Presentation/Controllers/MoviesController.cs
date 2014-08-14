@@ -23,7 +23,7 @@ namespace Pinicules.Presentation.Controllers
         {
 
             var model = new SearchModel();
-            model.Categories = this.moviesService.GetCategories();
+            model.Categories = this.moviesService.GetCategories().Select(c => c.Name).ToList();
 
             return View(model);
         }

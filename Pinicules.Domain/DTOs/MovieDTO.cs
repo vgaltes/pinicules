@@ -10,7 +10,7 @@ namespace Pinicules.Domain.DTOs
 
         public MovieDTO()
         {
-            Categories = new List<string>();
+            Categories = new List<CategoryDTO>();
         }
 
         public MovieDTO(int id, string comments, float rating)
@@ -30,6 +30,6 @@ namespace Pinicules.Domain.DTOs
 
         public string Image { get; set; }
 
-        public List<string> Categories { get; set; }
+        public List<CategoryDTO> Categories { get; set; }
     }
 }

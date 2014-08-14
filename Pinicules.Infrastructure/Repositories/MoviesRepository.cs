@@ -5,6 +5,7 @@ using Pinicules.Data.Entities;
 using Pinicules.Data.Infrastructure;
 using Pinicules.Domain.DTOs;
 using Pinicules.Domain.Repositories;
+using AutoMapper;
 
 namespace Pinicules.Data.Repositories
 {
@@ -15,6 +16,9 @@ namespace Pinicules.Data.Repositories
         public MoviesRepository(IMoviesContext moviesContext)
         {
             this.moviesContext = moviesContext;
+
+            Mapper.CreateMap<Movie, MovieDTO>();
+            Mapper.CreateMap<Category, CategoryDTO>();
         }
  
         public List<MovieDTO> GetMovies(string searchTerm, string category, int numItems, int page, int pageSize)
@@ -48,10 +52,11 @@ namespace Pinicules.Data.Repositories
                     .OrderBy(m=>m.Title)
                     .Skip((page - 1) * pageSize)
                     .Take(numItems)
-                    .Select(m => new MovieDTO{
-                        Id = m.Id, 
-                        Title = m.Title, 
-                        Categories = (m.Categories == null ? new List<string>() : m.Categories.Select(c => c.Name).ToList())})
+                    //.Select(m => new MovieDTO{
+                    //    Id = m.Id, 
+                    //    Title = m.Title, 
+                    //    Categories = (m.Categories == null ? new List<string>() : m.Categories.Select(c => c.Name).ToList())})
+                    .Select(m => Mapper.Map<MovieDTO>(m))
                     .ToList();
         }
 
@@ -80,11 +85,11 @@ namespace Pinicules.Data.Repositories
         }
 
 
-        public List<string> GetCategoriesFromMovie(int movieId)
+        public List<CategoryDTO> GetCategoriesFromMovie(int movieId)
         {
             Movie movie = moviesContext.Movies.Find(movieId);
 
-            return movie.Categories.Select(c => c.Name).ToList();
+            return movie.Categories.Select(c => Mapper.Map<CategoryDTO>(c)).ToList();
         }
 
 
@@ -105,9 +110,9 @@ namespace Pinicules.Data.Repositories
             this.moviesContext.Save();
         }
 
-        List<string> IMoviesRepository.GetCategories()
+        List<CategoryDTO> IMoviesRepository.GetCategories()
         {
-            return moviesContext.Categories.Select(c => c.Name).ToList();
+            return moviesContext.Categories.Select(c => Mapper.Map<CategoryDTO>(c)).ToList();
         }
     }
 }

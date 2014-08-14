@@ -17,7 +17,7 @@ namespace Pinicules.Presentation.Models
             this.Image = movieDTO.Image;
             this.Summary = movieDTO.Summary;
             this.PreviousSearch = previousSearch;
-            this.Categories = movieDTO.Categories;
+            this.Categories = movieDTO.Categories.Select(c => c.Name).ToList();
         }
 
         public int Id { get; set; }

@@ -17,6 +17,6 @@ namespace Pinicules.Domain.Services
 
         void RemoveCategoryFromMovie(string category, int idMovie);
 
-        List<string> GetCategories();
+        List<CategoryDTO> GetCategories();
     }
 }

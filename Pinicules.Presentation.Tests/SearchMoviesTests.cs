@@ -9,6 +9,7 @@ using Pinicules.Domain.Repositories;
 using Pinicules.Data.Entities;
 using System.Collections.Generic;
 using Pinicules.Domain.Services;
+using Pinicules.Domain.DTOs;
 
 namespace Pinicules.Presentation.Tests
 {
@@ -19,7 +20,9 @@ namespace Pinicules.Presentation.Tests
         public void SearchWillGetAListOfCategoriesFromMoviesService()
         {
             var mockMoviesService = new Mock<IMoviesService>();
-            var categories = new List<string>{"Drama","Action"};
+            var categories = new List<CategoryDTO>{
+                new CategoryDTO{Name = "Drama"},
+                new CategoryDTO { Name = "Action"}};
 
             mockMoviesService.Setup(mr => mr.GetCategories()).Returns(categories);
 

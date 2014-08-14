@@ -63,7 +63,7 @@ namespace Pinicules.Domain.Services
             moviesRepository.RemoveCategoryFromMovie(category, idMovie);
         }
 
-        public List<string> GetCategories()
+        public List<CategoryDTO> GetCategories()
         {
             return moviesRepository.GetCategories();
         }

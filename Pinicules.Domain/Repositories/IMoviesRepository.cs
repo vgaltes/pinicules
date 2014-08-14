@@ -11,10 +11,10 @@ namespace Pinicules.Domain.Repositories
 
         void AddCategoryToMovie(string category, int idMovie);
 
-        List<string> GetCategoriesFromMovie(int movieId);
+        List<CategoryDTO> GetCategoriesFromMovie(int movieId);
 
         void RemoveCategoryFromMovie(string category, int idMovie);
 
-        List<string> GetCategories();
+        List<CategoryDTO> GetCategories();
     }
 }
