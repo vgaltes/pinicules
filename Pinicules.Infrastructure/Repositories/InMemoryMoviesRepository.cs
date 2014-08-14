@@ -30,11 +30,12 @@ namespace Pinicules.Data.Repositories
                 new MovieDTO(){Id = 157353, Title="Transcendence", Categories = new List<string>() { "Comedy"}}
             };
 
-        public List<MovieDTO> GetMovies(string searchTerm, List<string> categories, int numItems, int page, int pageSize)
+        public List<MovieDTO> GetMovies(string searchTerm, string category, int numItems, int page, int pageSize)
         {
             return movies
                     .Where(m => m.Title.ToLowerInvariant().Contains(searchTerm.ToLowerInvariant()))
-                    .Where((m => !categories.Any() ? true : m.Categories.Intersect(categories).Any()))
+                    //.Where((m => !categories.Any() ? true : m.Categories.Intersect(categories).Any()))
+                    .Where(m => string.IsNullOrWhiteSpace(category) ? true : m.Categories.Contains(category))
                     .Skip((page - 1) * pageSize)
                     .Take(numItems).ToList();
         }

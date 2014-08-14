@@ -51,7 +51,7 @@ namespace Pinicules.Specs
 
             moviesController.Add(new NewMovie(124905, "Godzilla"));
 
-            ActionResult result = moviesController.SearchMovies(2, new List<string>());
+            ActionResult result = moviesController.SearchMovies(2, string.Empty);
 
             MoviesSearchResult model = result.ShouldBe<PartialViewResult>().WithModel().OfType<MoviesSearchResult>();
             Assert.AreEqual(6, model.Items.Count);

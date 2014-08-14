@@ -21,16 +21,5 @@ namespace Pinicules.Data.Entities
     public class Category
     {
         public string Name { get; set; }
-
-        public override bool Equals(object obj)
-        {
-            if (!(obj is Category))
-                return false;
-            else
-            {
-                var otherCategory = obj as Category;
-                return this.Name == otherCategory.Name;
-            }
-        }
     }
 }

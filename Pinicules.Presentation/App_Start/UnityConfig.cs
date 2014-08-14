@@ -7,6 +7,8 @@ using Pinicules.Data.Repositories;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Pinicules.Presentation.Identity;
+using Pinicules.Presentation.Controllers;
+using Pinicules.Data.Infrastructure;
 
 namespace Pinicules.Presentation
 {
@@ -16,9 +18,16 @@ namespace Pinicules.Presentation
         {
 			var container = new UnityContainer();
             
-            container.RegisterTypes(AllClasses.FromLoadedAssemblies(),
-                                    WithMappings.FromMatchingInterface,
-                                    WithName.Default);
+            //container.RegisterTypes(AllClasses.FromLoadedAssemblies(),
+            //                        WithMappings.FromMatchingInterface,
+            //                        WithName.Default);
+
+            container.RegisterType<IMoviesContext, MoviesContext>();
+            container.RegisterType<IMoviesRepository, MoviesRepository>();
+            container.RegisterType<ITmdbRepository, TmdbRepository>();
+            container.RegisterType<IMoviesService, MoviesService>();
+            container.RegisterType<MoviesController>();
+            container.RegisterType<AuthController>();
 
             var userManager = new UserManager<AppUser>(
                 new UserStore<AppUser>(new AppDbContext()));

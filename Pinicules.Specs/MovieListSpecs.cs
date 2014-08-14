@@ -28,7 +28,7 @@ namespace Pinicules.Specs
         [TestMethod]
         public void If_I_Have_Ten_Movies_In_DB_Controller_Returns_A_Model_With_Ten_Items()
         {
-            ActionResult result = moviesController.SearchMovies(1, new List<string>());
+            ActionResult result = moviesController.SearchMovies(1, string.Empty);
 
             MoviesSearchResult model = result.ShouldBe<PartialViewResult>().WithModel().OfType<MoviesSearchResult>();
             Assert.AreEqual(10, model.Items.Count);
@@ -37,7 +37,7 @@ namespace Pinicules.Specs
         [TestMethod]
         public void If_I_Have_More_Than_Ten_Movies_In_DB_Controller_Returns_A_Model_With_Load_More_Enabled()
         {
-            ActionResult result = moviesController.SearchMovies(1, new List<string>());
+            ActionResult result = moviesController.SearchMovies(1, string.Empty);
 
             MoviesSearchResult model = result.ShouldBe<PartialViewResult>().WithModel().OfType<MoviesSearchResult>();
             Assert.IsTrue(model.LoadMore);
@@ -46,7 +46,7 @@ namespace Pinicules.Specs
         [TestMethod]
         public void Movies_Controller_Return_Items_Regarding_The_Actual_Page()
         {
-            ActionResult result = moviesController.SearchMovies(2, new List<string>());
+            ActionResult result = moviesController.SearchMovies(2, string.Empty);
 
             MoviesSearchResult model = result.ShouldBe<PartialViewResult>().WithModel().OfType<MoviesSearchResult>();
             Assert.IsFalse(model.LoadMore);
@@ -57,7 +57,7 @@ namespace Pinicules.Specs
         [TestMethod]
         public void When_Looking_For_Spiderman_Should_Return_One_Result()
         {
-            ActionResult result = moviesController.SearchMovies(1, new List<string>(), "Spiderman");
+            ActionResult result = moviesController.SearchMovies(1, string.Empty, "Spiderman");
 
             MoviesSearchResult model = result.ShouldBe<PartialViewResult>().WithModel().OfType<MoviesSearchResult>();
             Assert.IsFalse(model.LoadMore);
@@ -67,7 +67,7 @@ namespace Pinicules.Specs
         [TestMethod]
         public void When_Looking_For_Category_Drama_Should_Return_One_Result()
         {
-            ActionResult result = moviesController.SearchMovies(1, new List<string> { "Drama" }, "");
+            ActionResult result = moviesController.SearchMovies(1, "Drama", "");
 
             MoviesSearchResult model = result.ShouldBe<PartialViewResult>().WithModel().OfType<MoviesSearchResult>();
             Assert.IsFalse(model.LoadMore);

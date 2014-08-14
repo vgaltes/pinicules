@@ -7,7 +7,7 @@ namespace Pinicules.Domain.Services
     {
         void AddNewMovie(int movieId, string title);
 
-        List<MovieDTO> GetMovies(string searchTerm, List<string> categories, int numItems, int page, int pageSize);
+        List<MovieDTO> GetMovies(string searchTerm, string category, int numItems, int page, int pageSize);
 
         MovieDTO GetMovie(int movieId);
 

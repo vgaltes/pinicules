@@ -25,6 +25,7 @@ namespace Pinicules.Presentation
             Response.Write("<h2>Global Page Error</h2>\n");
             Response.Write(
                 "<p>" + exc.Message + "</p>\n");
+            Response.Write(exc.InnerException.Message);
 
             // Clear the error from the server
             Server.ClearError();

@@ -17,7 +17,7 @@ namespace Pinicules.Data.Repositories
             this.moviesContext = moviesContext;
         }
  
-        public List<MovieDTO> GetMovies(string searchTerm, List<string> categories, int numItems, int page, int pageSize)
+        public List<MovieDTO> GetMovies(string searchTerm, string category, int numItems, int page, int pageSize)
         {
             Func<Movie, bool> filter;
             Func<Movie, bool> categoriesFilter;
@@ -31,14 +31,14 @@ namespace Pinicules.Data.Repositories
                 filter = new Func<Movie,bool>(m => m.Title.ToLower().Contains(searchTerm.ToLower() ));
             }
 
-            if (categories == null || !categories.Any())
+            if ( string.IsNullOrWhiteSpace(category))
             {
                 categoriesFilter = new Func<Movie, bool>(m => true);
             }
             else
             {
                 categoriesFilter = new Func<Movie, bool>(m =>
-                    m.Categories.Select(c => c.Name).Intersect(categories).Any()
+                    m.Categories.Any(c => c.Name == category)
                 );
             }
 

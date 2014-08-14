@@ -12,7 +12,7 @@
         Url = Url.Action("SearchMovies", new { page = 1 }),
     }))
     {
-        Html.RenderPartial("SearchInput");
+        Html.RenderPartial("SearchInput", Model.Categories);
     }
 </div>
 
