@@ -94,7 +94,7 @@ namespace Pinicules.Presentation.Controllers
             var items = moviesService.LookupMovies(searchTerm);
 
             var model = new LookupMoviesResult();
-            model.Items = items.Select(i => new LookupMovieItem 
+            model.Items = items.Select(i => new MovieSearchItem 
             { 
                 Id = i.Id,
                 Image = (string.IsNullOrWhiteSpace(i.Image) ? @Url.Content("~/Content/noMovieImage.png") : i.Image), 
