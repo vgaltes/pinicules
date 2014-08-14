@@ -77,7 +77,10 @@ namespace Pinicules.Specs
         [TestMethod]
         public void When_Getting_Search_Screen_The_Category_List_Should_Be_Filled()
         {
+            ActionResult result = moviesController.Search();
 
+            SearchModel model = result.ShouldBe<ViewResult>().WithModel().OfType<SearchModel>();
+            Assert.AreEqual(6, model.Categories.Count);
         }
     }
 }

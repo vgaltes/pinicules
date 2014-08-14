@@ -21,7 +21,9 @@ namespace Pinicules.Presentation.Controllers
 
         public ActionResult Search(string searchTerm = "")
         {
+
             var model = new SearchModel();
+            model.Categories = this.moviesService.GetCategories();
 
             return View(model);
         }
