@@ -73,5 +73,11 @@ namespace Pinicules.Specs
             Assert.IsFalse(model.LoadMore);
             Assert.AreEqual(1, model.Items.Count);
         }
+
+        [TestMethod]
+        public void When_Getting_Search_Screen_The_Category_List_Should_Be_Filled()
+        {
+
+        }
     }
 }

@@ -187,6 +187,7 @@
     <Compile Include="Models\MoviesSearchResult.cs" />
     <Compile Include="Models\NewMovie.cs" />
     <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\SearchModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="WebResources.Designer.cs">
