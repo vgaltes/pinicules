@@ -52,10 +52,6 @@ namespace Pinicules.Data.Repositories
                     .OrderBy(m=>m.Title)
                     .Skip((page - 1) * pageSize)
                     .Take(numItems)
-                    //.Select(m => new MovieDTO{
-                    //    Id = m.Id, 
-                    //    Title = m.Title, 
-                    //    Categories = (m.Categories == null ? new List<string>() : m.Categories.Select(c => c.Name).ToList())})
                     .Select(m => Mapper.Map<MovieDTO>(m))
                     .ToList();
         }
