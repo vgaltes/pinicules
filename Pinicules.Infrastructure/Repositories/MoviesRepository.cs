@@ -95,6 +95,14 @@ namespace Pinicules.Data.Repositories
             movie.Categories.Remove(movie.Categories.First(c => c.Name == category));
 
             this.moviesContext.Save();
+
+            if (!moviesContext.Movies.Any(m => m.Categories.Any(c => c.Name == category))) 
+            {
+                var categoryToRemove = this.moviesContext.Categories.Find(category);
+                this.moviesContext.Categories.Remove(categoryToRemove);
+            }
+
+            this.moviesContext.Save();
         }
 
         List<string> IMoviesRepository.GetCategories()
