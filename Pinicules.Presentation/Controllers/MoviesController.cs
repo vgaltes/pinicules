@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 
 namespace Pinicules.Presentation.Controllers
 {
@@ -17,6 +18,11 @@ namespace Pinicules.Presentation.Controllers
         public MoviesController(IMoviesService moviesService)
         {
             this.moviesService = moviesService;
+
+            Mapper.CreateMap<MovieDTO, MovieSearchItem>()
+                .ForMember(m => m.Image,
+                    opt => opt.MapFrom(src => string.IsNullOrWhiteSpace(src.Image) ? @Url.Content("~/Content/noMovieImage.png")
+                        : src.Image));
         }
 
         public ActionResult Search(string searchTerm = "")
@@ -34,11 +40,12 @@ namespace Pinicules.Presentation.Controllers
 
             var model = new MoviesSearchResult() 
             { 
-                Items = movies.Take(PAGE_SIZE).Select(m => new MovieSearchItem { 
-                    Id = m.Id, 
-                    Title = m.Title, 
-                    Image = (string.IsNullOrWhiteSpace(m.Image) ? @Url.Content("~/Content/noMovieImage.png") : m.Image )
-                }).ToList(),
+                //Items = movies.Take(PAGE_SIZE).Select(m => new MovieSearchItem { 
+                //    Id = m.Id, 
+                //    Title = m.Title, 
+                //    Image = (string.IsNullOrWhiteSpace(m.Image) ? @Url.Content("~/Content/noMovieImage.png") : m.Image )
+                //}).ToList(),
+                Items = movies.Take(PAGE_SIZE).Select(m => Mapper.Map<MovieDTO, MovieSearchItem>(m)).ToList(),
                 SearchTerm = searchTerm,
                 NextPage = page + 1
             };

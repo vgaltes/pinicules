@@ -10,7 +10,7 @@ namespace Pinicules.Presentation.Models
         public List<LookupMovieItem> Items { get; set; }
     }
 
-    public class LookupMovieItem
+    public class    LookupMovieItem
     {
         public int Id { get; set; }
 

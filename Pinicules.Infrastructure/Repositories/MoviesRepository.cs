@@ -108,7 +108,7 @@ namespace Pinicules.Data.Repositories
 
         List<CategoryDTO> IMoviesRepository.GetCategories()
         {
-            return moviesContext.Categories.Select(c => Mapper.Map<CategoryDTO>(c)).ToList();
+            return Mapper.Map<List<Category>, List<CategoryDTO>>(moviesContext.Categories.ToList());
         }
     }
 }
