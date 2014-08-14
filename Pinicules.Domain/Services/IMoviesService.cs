@@ -16,5 +16,7 @@ namespace Pinicules.Domain.Services
         void AddCategoryToMovie(string category, int idMovie);
 
         void RemoveCategoryFromMovie(string category, int idMovie);
+
+        List<string> GetCategories();
     }
 }

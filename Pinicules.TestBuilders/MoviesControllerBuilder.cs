@@ -2,6 +2,8 @@
 using Pinicules.Domain.Services;
 using Pinicules.Data.Repositories;
 using Pinicules.Presentation.Controllers;
+using Pinicules.Domain.DTOs;
+using System.Collections.Generic;
 
 namespace Pinicules.TestBuilders
 {
@@ -9,6 +11,7 @@ namespace Pinicules.TestBuilders
     {
         IMoviesRepository moviesRepository;
         ITmdbRepository tmdbRepository;
+        IMoviesService moviesService;
 
         public MoviesControllerBuilder()
         {
@@ -29,8 +32,16 @@ namespace Pinicules.TestBuilders
 
         public MoviesController Build()
         {
-            var moviesService = new MoviesService(moviesRepository, tmdbRepository);
+            if (moviesService == null)
+                moviesService = new MoviesService(moviesRepository, tmdbRepository);
+            
             return new MoviesController(moviesService);
+        }
+
+        public MoviesControllerBuilder WithMovieService(IMoviesService moviesService)
+        {
+            this.moviesService = moviesService;
+            return this;
         }
     }
 }

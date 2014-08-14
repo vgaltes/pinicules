@@ -8,6 +8,7 @@ using Moq;
 using Pinicules.Domain.Repositories;
 using Pinicules.Data.Entities;
 using System.Collections.Generic;
+using Pinicules.Domain.Services;
 
 namespace Pinicules.Presentation.Tests
 {
@@ -17,19 +18,20 @@ namespace Pinicules.Presentation.Tests
         [TestMethod]
         public void SearchWillGetAListOfCategoriesFromMoviesService()
         {
-            var mockMoviesRepository = new Mock<IMoviesRepository>();
-            var categories = new List<Category>{new Category{Name="Drama"}, new Category{Name="Action"}};
-            mockMoviesRepository.Setup(mr => mr.GetCategories()).Returns(categories);
+            var mockMoviesService = new Mock<IMoviesService>();
+            var categories = new List<string>{"Drama","Action"};
+
+            mockMoviesService.Setup(mr => mr.GetCategories()).Returns(categories);
 
             var moviesController = new MoviesControllerBuilder()
-                                        .WithMemoryMoviesRepository(mockMoviesRepository.Object)
+                                        .WithMovieService(mockMoviesService.Object)
                                         .Build();
 
             var result = moviesController.Search();
 
             var model = result.ShouldBe<ViewResult>().WithModel().OfType<SearchModel>();
             Assert.IsTrue(model.Categories.Count > 0);
-            mockMoviesRepository.Verify(mr => mr.GetCategories());
+            mockMoviesService.Verify(mr => mr.GetCategories());
         }
     }
 }

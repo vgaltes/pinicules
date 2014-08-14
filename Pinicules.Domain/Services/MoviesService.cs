@@ -62,5 +62,10 @@ namespace Pinicules.Domain.Services
         {
             moviesRepository.RemoveCategoryFromMovie(category, idMovie);
         }
+
+        public List<string> GetCategories()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
