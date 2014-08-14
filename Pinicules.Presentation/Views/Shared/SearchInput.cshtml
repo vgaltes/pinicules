@@ -1,10 +1,11 @@
 ﻿@model List<string>
     <div class="input-group col-md-8 col-md-offset-2">
-        @*<div class="col-md-2">
-            @Html.DropDownList("categories", Model.Select(c => new SelectListItem { Text = c, Value = c }).ToList(), new { @class = "form-control" })
-        </div>*@
-        @*<div class="col-md-4">*@
-        @Html.DropDownList("categories", Model.Select(c => new SelectListItem { Text = c, Value = c }).ToList(), new { @class = "form-control width-20" })
+
+        @{
+            var categories = Model.Select(c => new SelectListItem { Text = c, Value = c }).ToList();
+            categories.Insert(0, new SelectListItem{Text = "Categoria", Value=string.Empty});
+        }
+        @Html.DropDownList("category", categories, new { @class = "form-control width-20" })
             <input type="text" id="searchTerm" name="searchTerm" class="form-control width-80" placeholder="@WebResources.SearchPlaceholder">
             <span class="input-group-btn">
                 <button type="submit" class="btn btn-default">@WebResources.Search</button>
