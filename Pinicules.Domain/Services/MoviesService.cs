@@ -65,7 +65,7 @@ namespace Pinicules.Domain.Services
 
         public List<string> GetCategories()
         {
-            throw new System.NotImplementedException();
+            return moviesRepository.GetCategories();
         }
     }
 }

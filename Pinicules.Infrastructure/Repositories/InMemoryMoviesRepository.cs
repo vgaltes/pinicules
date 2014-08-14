@@ -8,6 +8,10 @@ namespace Pinicules.Data.Repositories
 {
     public class InMemoryMoviesRepository : IMoviesRepository
     {
+        private List<string> categories = new List<string>{
+            "Action", "Drama", "History", "Comedy", "Cartoon", "Thriller"
+        };
+
         private List<MovieDTO> movies = new List<MovieDTO>{
                 new MovieDTO(){Id = 100402, Title="Captain America: The Winter Soldier", Categories = new List<string>() { "Action"}},
                 new MovieDTO(){Id = 102382, Title="The Amazing SpiderMan 2", Categories = new List<string>() { "Action"}},
@@ -62,7 +66,7 @@ namespace Pinicules.Data.Repositories
 
         public List<string> GetCategories()
         {
-            throw new NotImplementedException();
+            return categories;
         }
     }
 }
