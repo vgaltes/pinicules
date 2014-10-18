@@ -15,14 +15,24 @@ namespace Pinicules.Presentation.Controllers
         private readonly IMoviesService moviesService;
         private const int PAGE_SIZE = 10;
 
+
+        public Func<MovieDTO, string> GetConversionForMovieSearchItem()
+        {
+            return new Func<MovieDTO, string>(src =>
+            {
+                var image = string.IsNullOrWhiteSpace(src.Image) ? UrlHelper.GenerateContentUrl("~/Content/noMovieImage.png", this.HttpContext)
+                            : src.Image;
+                return image;
+            });
+        }
+
         public MoviesController(IMoviesService moviesService)
         {
             this.moviesService = moviesService;
 
             Mapper.CreateMap<MovieDTO, MovieSearchItem>()
                 .ForMember(m => m.Image,
-                    opt => opt.MapFrom(src => string.IsNullOrWhiteSpace(src.Image) ? @Url.Content("~/Content/noMovieImage.png")
-                        : src.Image));
+                    opt => opt.MapFrom(src => GetConversionForMovieSearchItem()(src)));
         }
 
         public ActionResult Search(string searchTerm = "")
@@ -40,11 +50,6 @@ namespace Pinicules.Presentation.Controllers
 
             var model = new MoviesSearchResult() 
             { 
-                //Items = movies.Take(PAGE_SIZE).Select(m => new MovieSearchItem { 
-                //    Id = m.Id, 
-                //    Title = m.Title, 
-                //    Image = (string.IsNullOrWhiteSpace(m.Image) ? @Url.Content("~/Content/noMovieImage.png") : m.Image )
-                //}).ToList(),
                 Items = movies.Take(PAGE_SIZE).Select(m => Mapper.Map<MovieDTO, MovieSearchItem>(m)).ToList(),
                 SearchTerm = searchTerm,
                 NextPage = page + 1
@@ -94,12 +99,14 @@ namespace Pinicules.Presentation.Controllers
             var items = moviesService.LookupMovies(searchTerm);
 
             var model = new LookupMoviesResult();
-            model.Items = items.Select(i => new MovieSearchItem 
-            { 
+            model.Items = items.Select(i => new MovieSearchItem
+            {
                 Id = i.Id,
-                Image = (string.IsNullOrWhiteSpace(i.Image) ? @Url.Content("~/Content/noMovieImage.png") : i.Image), 
-                Title = i.Title 
+                Image = (string.IsNullOrWhiteSpace(i.Image) ? Url.Content("~/Content/noMovieImage.png") : i.Image),
+                Title = i.Title
             }).ToList();
+
+            //model.Items = Mapper.Map<List<MovieDTO>, List<MovieSearchItem>>(items);
 
             return PartialView(model);
         }

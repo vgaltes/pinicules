@@ -29,6 +29,7 @@ namespace Pinicules.Presentation.Controllers
             return View(model);
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public async Task<ActionResult> LogIn(LogInModel model)
         {
@@ -61,6 +62,7 @@ namespace Pinicules.Presentation.Controllers
             return View(model);
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public async Task<ActionResult> Register(RegisterModel userRegistered)
         {
